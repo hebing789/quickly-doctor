@@ -7,9 +7,18 @@
 //
 
 #import "LoginViewController.h"
+#import "MBProgressHUD+WP.h"
+#import "HomeViewController.h"
+#import "AppDelegate.h"
+#import "LeftViewController.h"
+
+#import "JASidePanelController.h"
 #define KsceeenWidth [UIScreen mainScreen].bounds.size.width
 #define KscreenHight [UIScreen mainScreen].bounds.size.height
 @interface LoginViewController ()
+@property(nonatomic,copy)NSString *textstr1;
+@property(nonatomic,copy)NSString *textstr2;
+
 
 @end
 
@@ -55,8 +64,13 @@
     //设置两个textfile
     UITextField *textfile1 = [[UITextField alloc]init];
     textfile1.borderStyle = UITextBorderStyleRoundedRect;
+    [textfile1 addTarget:self action:@selector(checkValue:) forControlEvents:UIControlEventEditingChanged];
+    //_textstr1 = textfile1.text;
     UITextField *textfile2 = [[UITextField alloc]init];
     textfile2 .borderStyle = UITextBorderStyleRoundedRect;
+    //_textstr2 = textfile2.text;
+    [textfile2 addTarget: self action:@selector(valueChange:) forControlEvents:UIControlEventEditingChanged];
+    
     [self.view addSubview:textfile1];
     [self.view addSubview:textfile2];
     
@@ -75,7 +89,13 @@
         make.left.mas_equalTo (self.view.mas_left).offset(20);
         make.right.mas_equalTo (self.view.mas_right).offset(-20);
     }];
-    
+    NSUserDefaults *defaults = [[NSUserDefaults alloc]init];
+    if([defaults objectForKey:@"__textstr1"]&&[defaults objectForKey:@"__textstr2"]){
+        textfile1.text = [defaults objectForKey:@"__textstr1"];
+        textfile2.text = [defaults objectForKey:@"__textstr2"];
+        
+        
+    }
     //给view添加button
     UIButton *button = [[UIButton alloc]init];
     [button setBackgroundImage:[UIImage imageNamed:@"link_button_01"] forState:UIControlStateNormal];
@@ -92,11 +112,70 @@
         make.right.mas_equalTo(self.view.mas_right).offset(-20);
     }];
     
+    
 }
+-(void)checkValue:(UITextField*)textfile1{
+    NSUserDefaults *defaults = [[NSUserDefaults alloc]init];
+    if (!([defaults objectForKey:@"__textstr1"])) {
+        
+        
+        _textstr1 = textfile1.text;
+        
+    }
+    
+    
+}
+
+-(void)valueChange:(UITextField*)textfile2{
+    NSUserDefaults *defaults = [[NSUserDefaults alloc]init];
+    if (!([defaults objectForKey:@"__textstr2"])) {
+        
+        
+        _textstr2 = textfile2.text;
+        
+        
+    }
+    
+    
+    
+    
+}
+
 
 //按钮点击事件
 -(void)clickLoginButton
 {
+    
+    //判断是否成功 成功显示登录成功的遮罩 跳转到home界面
+    if ([_textstr1 isEqualToString:@"1"]&&[_textstr2 isEqualToString:@"1"]) {
+        //登录成功 显示遮罩
+        
+        [MBProgressHUD showSuccessMessage:@"登录成功" afterDelay:2.0f];
+        
+        
+        [self.navigationController popToRootViewControllerAnimated:YES];
+        //记录密码写入到用户的偏好设置里面
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:@"1" forKey:@"__textstr1"];
+        [defaults setObject:@"1" forKey:@"__textstr2"];
+        //立马写入
+        [defaults synchronize];
+        //发送通知
+        NSNotification *notice = [NSNotification notificationWithName:@"gao" object:nil];
+        [[NSNotificationCenter defaultCenter]postNotification:notice];
+        
+        
+        
+    }else {
+        //登录失败
+        [MBProgressHUD showErrorMessage:@"登录失败" afterDelay:2.0f];
+        
+        
+        
+    }
+    
+    
     
     
     
@@ -116,13 +195,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

@@ -15,6 +15,7 @@
 #import "SettingViewController.h"
 #import "AboutProductViewController.h"
 #import "SharedViewController.h"
+#import "HMTableViewController.h"
 
 @interface LeftViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -30,20 +31,25 @@
 @property (nonatomic, strong) NSArray *arrData1;
 
 @property (nonatomic, strong) NSArray *arrData2;
-
 @end
 
 @implementation LeftViewController
-
+/**
+ *   sign
+ */
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-
+    
     [self configureUI];
     
     [self setupUI];
     
+    
+    
+    
 }
+
 
 #pragma mark  - 配置
 -(void)configureUI{
@@ -63,18 +69,46 @@
 #pragma mark  - 设置UI
 - (void)setupUI {
     
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(changeView) name:@"gao" object:nil ];
+    
+    
     //********登录和未登录都已写好，切换点在此，别忘了*************
-    
+    //先从用户偏好设置取值
+    //1.获取NSUserDefaults对象
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    //读取保存的数据
+    NSString *str1 = [defaults objectForKey:@"__textstr1"];
+    NSString *str2 = [defaults objectForKey:@"__textstr2"];
+    NSLog(@"%@",str1);
+    NSLog(@"%@",str2);
     [self.view addSubview:self.noLoginBGView];
-    
     [self.view addSubview:self.tableview];
     
-    [self.tableview mas_makeConstraints:^(MASConstraintMaker *make) {
-        //别忘了相对位置
-        make.top.mas_equalTo(self.noLoginBGView.mas_bottom);
-        make.left.bottom.mas_equalTo(0);
-        make.width.mas_equalTo(SCREEN_LEFT_WIDTH);
-    }];
+    if([str1 isEqualToString:@"1"]&&[str2 isEqualToString:@"1"]){
+        [self.noLoginBGView removeFromSuperview];
+        [self.view addSubview:self.loginBGView];
+        [self.tableview mas_makeConstraints:^(MASConstraintMaker *make) {
+            //别忘了相对位置
+            make.top.mas_equalTo(self.loginBGView.mas_bottom);
+            make.left.bottom.mas_equalTo(0);
+            make.width.mas_equalTo(SCREEN_LEFT_WIDTH);
+        }];
+    }else{
+        
+        [self.view addSubview:self.tableview];
+        
+        [self.tableview mas_makeConstraints:^(MASConstraintMaker *make) {
+            //别忘了相对位置
+            make.top.mas_equalTo(self.noLoginBGView.mas_bottom);
+            make.left.bottom.mas_equalTo(0);
+            make.width.mas_equalTo(SCREEN_LEFT_WIDTH);
+        }];
+        
+        
+        
+    }
+    
+    
     
 }
 
@@ -220,7 +254,7 @@
     
     if (_tableview == nil) {
         
-       _tableview = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        _tableview = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
         
         _tableview.dataSource = self;
         _tableview.delegate = self;
@@ -298,6 +332,15 @@
             make.left.mas_equalTo(20);
             make.top.mas_equalTo(30);
         }];
+        //给iconV添加手势
+        iconV.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(clickDescLable:)];
+        
+        [iconV addGestureRecognizer:tap];
+        
+        
+        
+        
         
         //昵称
         UILabel *nameLabel = [[UILabel alloc] init];
@@ -322,9 +365,44 @@
             make.bottom.equalTo(iconV).offset(-5);
             make.left.mas_equalTo(iconV.mas_right).offset(15);
         }];
+        UITapGestureRecognizer *tapRecognizerDescLable=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickDescLable:)];
+        descLabel.userInteractionEnabled = YES;
+        [descLabel addGestureRecognizer:tapRecognizerDescLable];
     }
     
     return _loginBGView;
 }
 
+-(void)clickDescLable:(UILabel *)descLable
+{
+    
+    HMTableViewController *tableController = [[HMTableViewController alloc]init];
+    //[self.navigationController popViewControllerAnimated:YES]; //返回上一页面
+    
+    UINavigationController* nav=[[UINavigationController alloc]initWithRootViewController:tableController];
+    [self presentViewController:nav animated:YES completion:nil];
+    //    [self.navigationController pushViewController:tableController animated:YES];
+    
+    
+    
+    
+}
+
+-(void)changeView{
+    
+    //[self.view addSubview:self.noLoginBGView];
+    [self.view addSubview:self.loginBGView];
+    [self.tableview mas_makeConstraints:^(MASConstraintMaker *make) {
+        //别忘了相对位置
+        make.top.mas_equalTo(self.loginBGView.mas_bottom);
+        make.left.bottom.mas_equalTo(0);
+        make.width.mas_equalTo(SCREEN_LEFT_WIDTH);
+    }];
+    
+    
+    
+    
+    
+    
+}
 @end

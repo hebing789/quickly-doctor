@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		180A8AC4107C482CD5C4136A /* libPods-QuickCure.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 37652501B8E358654874720D /* libPods-QuickCure.a */; };
+		3201F7721D89333100C2BAB6 /* HMTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3201F7701D89333100C2BAB6 /* HMTableViewController.m */; };
 		37E877211D86F85200F92637 /* CaseManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E877201D86F85200F92637 /* CaseManagerViewController.m */; };
 		37E877281D86FD4100F92637 /* CaseCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E877271D86FD4100F92637 /* CaseCreateViewController.m */; };
 		37E8772C1D8794F000F92637 /* CaseUpCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E8772B1D8794F000F92637 /* CaseUpCell.m */; };
@@ -58,6 +59,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3201F76F1D89333100C2BAB6 /* HMTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMTableViewController.h; sourceTree = "<group>"; };
+		3201F7701D89333100C2BAB6 /* HMTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMTableViewController.m; sourceTree = "<group>"; };
 		37652501B8E358654874720D /* libPods-QuickCure.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QuickCure.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		37E8771F1D86F85200F92637 /* CaseManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseManagerViewController.h; sourceTree = "<group>"; };
 		37E877201D86F85200F92637 /* CaseManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseManagerViewController.m; sourceTree = "<group>"; };
@@ -175,6 +178,16 @@
 				53412A15EB405EDDFA294015 /* Pods-QuickCure.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		3201F7711D89333100C2BAB6 /* TableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3201F76F1D89333100C2BAB6 /* HMTableViewController.h */,
+				3201F7701D89333100C2BAB6 /* HMTableViewController.m */,
+			);
+			name = TableViewController;
+			path = "../../../../../qualictly 2/QuickCure/QuickCure/Classes/Controllers";
 			sourceTree = "<group>";
 		};
 		37E877221D86FB9F00F92637 /* Create BL */ = {
@@ -417,6 +430,7 @@
 		3D3C693C1D83E58300980F63 /* Left */ = {
 			isa = PBXGroup;
 			children = (
+				3201F7711D89333100C2BAB6 /* TableViewController */,
 				3D3C694D1D83E6F800980F63 /* LeftViewController.h */,
 				3D3C694E1D83E6F800980F63 /* LeftViewController.m */,
 			);
@@ -773,6 +787,7 @@
 			files = (
 				37E877321D87A09700F92637 /* CaseUpModel.m in Sources */,
 				5BF4B3D61D86D3D60054AA86 /* UIView+UIframe.m in Sources */,
+				3201F7721D89333100C2BAB6 /* HMTableViewController.m in Sources */,
 				3D3C69611D83E84600980F63 /* FocusDoctorViewController.m in Sources */,
 				3D3C69301D83B9B500980F63 /* NetWorkTool.m in Sources */,
 				5BF4B3D01D86D17F0054AA86 /* WeatherModel.m in Sources */,
