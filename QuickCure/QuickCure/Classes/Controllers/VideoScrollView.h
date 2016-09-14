@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface VideoScrollView : UIScrollView
-
+@interface VideoScrollView : UIView
+@property(nonatomic,strong)NSMutableArray* dataAry;
 @end

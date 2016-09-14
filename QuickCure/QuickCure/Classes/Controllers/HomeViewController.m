@@ -75,7 +75,10 @@
 -(void)setVideo{
     
 
+    VideoScrollView* videoView=[[VideoScrollView alloc]initWithFrame:CGRectMake(0, 64+90, screemW, 200)];
+    videoView.backgroundColor=[UIColor blueColor];
     
+    [self.view addSubview:videoView];
     
     
     
