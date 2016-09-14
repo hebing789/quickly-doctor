@@ -96,12 +96,13 @@
 
 -(void)setMenue{
     /**
-     *  <#Description#>
+     *  血液科
      */
     UIButton *bloodBtn = [[UIButton alloc] init];
     [self.view addSubview:bloodBtn];
     bloodBtn.layer.borderWidth = 1;
     bloodBtn.layer.borderColor = [[UIColor lightGrayColor]CGColor];
+    bloodBtn.adjustsImageWhenHighlighted = NO;
     
     [bloodBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.equalTo(self.view);
@@ -110,18 +111,21 @@
     }];
     
     [bloodBtn setImage:[UIImage imageNamed:@"xy"] forState:UIControlStateNormal];
-    bloodBtn.imageEdgeInsets = UIEdgeInsetsMake(-20, 36, 0, 0);
+    bloodBtn.imageEdgeInsets = UIEdgeInsetsMake(-20, 22, 0, 0);
     [bloodBtn setTitle:@"血液科" forState:UIControlStateNormal];
     [bloodBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     bloodBtn.titleEdgeInsets = UIEdgeInsetsMake(70, -50, 0, 0);
     
+    [bloodBtn addTarget:self action:@selector(pushController:) forControlEvents:UIControlEventTouchUpInside];
+    
     /**
-     *  <#Description#>
+     *  骨科
      */
     UIButton *orthopedicsBtn = [[UIButton alloc] init];
     [self.view addSubview:orthopedicsBtn];
     orthopedicsBtn.layer.borderWidth = 1;
     orthopedicsBtn.layer.borderColor = [[UIColor lightGrayColor]CGColor];
+    orthopedicsBtn.adjustsImageWhenHighlighted = NO;
     
     [orthopedicsBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.equalTo(bloodBtn.mas_trailing);
@@ -135,13 +139,16 @@
     [orthopedicsBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     orthopedicsBtn.titleEdgeInsets = UIEdgeInsetsMake(70, -50, 0, 0);
     
+    [orthopedicsBtn addTarget:self action:@selector(pushController:) forControlEvents:UIControlEventTouchUpInside];
+    
     /**
-     *  <#Description#>
+     *  公益
      */
     UIButton *commonwealBtn = [[UIButton alloc] init];
     [self.view addSubview:commonwealBtn];
     commonwealBtn.layer.borderWidth = 1;
     commonwealBtn.layer.borderColor = [[UIColor lightGrayColor]CGColor];
+    commonwealBtn.adjustsImageWhenHighlighted = NO;
     
     [commonwealBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.equalTo(orthopedicsBtn.mas_trailing);
@@ -155,13 +162,16 @@
     [commonwealBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     commonwealBtn.titleEdgeInsets = UIEdgeInsetsMake(70, -50, 0, 0);
     
+    [commonwealBtn addTarget:self action:@selector(pushController:) forControlEvents:UIControlEventTouchUpInside];
+    
     /**
-     *  <#Description#>
+     *  肿瘤
      */
     UIButton *tumourBtn = [[UIButton alloc] init];
     [self.view addSubview:tumourBtn];
     tumourBtn.layer.borderWidth = 1;
     tumourBtn.layer.borderColor = [[UIColor lightGrayColor]CGColor];
+    tumourBtn.adjustsImageWhenHighlighted = NO;
     
     [tumourBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.equalTo(self.view);
@@ -175,13 +185,16 @@
     [tumourBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     tumourBtn.titleEdgeInsets = UIEdgeInsetsMake(70, -50, 0, 0);
     
+    [tumourBtn addTarget:self action:@selector(pushController:) forControlEvents:UIControlEventTouchUpInside];
+    
     /**
-     *  <#Description#>
+     *  心血管
      */
     UIButton *cardiovascularBtn = [[UIButton alloc] init];
     [self.view addSubview:cardiovascularBtn];
     cardiovascularBtn.layer.borderWidth = 1;
     cardiovascularBtn.layer.borderColor = [[UIColor lightGrayColor]CGColor];
+    cardiovascularBtn.adjustsImageWhenHighlighted = NO;
     
     [cardiovascularBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.equalTo(tumourBtn.mas_trailing);
@@ -190,18 +203,21 @@
     }];
     
     [cardiovascularBtn setImage:[UIImage imageNamed:@"xyg"] forState:UIControlStateNormal];
-    cardiovascularBtn.imageEdgeInsets = UIEdgeInsetsMake(-20, 36, 0, 0);
+    cardiovascularBtn.imageEdgeInsets = UIEdgeInsetsMake(-20, 0, 0, -52);
     [cardiovascularBtn setTitle:@"心血管" forState:UIControlStateNormal];
     [cardiovascularBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     cardiovascularBtn.titleEdgeInsets = UIEdgeInsetsMake(70, -50, 0, 0);
     
+    [cardiovascularBtn addTarget:self action:@selector(pushController:) forControlEvents:UIControlEventTouchUpInside];
+    
     /**
-     *  <#Description#>
+     *  神经科
      */
     UIButton *neurologyBtn = [[UIButton alloc] init];
     [self.view addSubview:neurologyBtn];
     neurologyBtn.layer.borderWidth = 1;
     neurologyBtn.layer.borderColor = [[UIColor lightGrayColor]CGColor];
+    neurologyBtn.adjustsImageWhenHighlighted = NO;
     
     [neurologyBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.equalTo(cardiovascularBtn.mas_trailing);
@@ -210,12 +226,17 @@
     }];
 
     [neurologyBtn setImage:[UIImage imageNamed:@"sj"] forState:UIControlStateNormal];
-    neurologyBtn.imageEdgeInsets = UIEdgeInsetsMake(-20, 36, 0, 0);
+    neurologyBtn.imageEdgeInsets = UIEdgeInsetsMake(-20, 0, 0, -52);
     [neurologyBtn setTitle:@"神经科" forState:UIControlStateNormal];
     [neurologyBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     neurologyBtn.titleEdgeInsets = UIEdgeInsetsMake(70, -50, 0, 0);
+    
+    [neurologyBtn addTarget:self action:@selector(pushController:) forControlEvents:UIControlEventTouchUpInside];
 }
 
-
+- (void)pushController:(UIButton *)button
+{
+    NSLog(@"----------------------%@",button.titleLabel.text);
+}
 
 @end
