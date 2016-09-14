@@ -65,7 +65,7 @@
     self.textView = textView;
     //设置代理
     textView.delegate = self;
-  
+    
     //automaticallyAdjustsScrollViewInsets 让提示文字置顶
     self.automaticallyAdjustsScrollViewInsets = NO;
     
@@ -76,7 +76,10 @@
     
     [textView mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.edges.equalTo(self.view).mas_offset(UIEdgeInsetsMake(70, 10, 400, 10));
+        make.top.equalTo(self.mas_topLayoutGuide).offset(10);
+        make.left.equalTo(@10);
+        make.right.equalTo(@-10);
+        //        make.bottom.equalTo(@100);
         
     }];
     
@@ -111,6 +114,7 @@
         //        make.bottom.mas_equalTo(@100);
         make.left.mas_equalTo(@60);
         make.right.mas_equalTo(@10);
+        
     }];
     UIButton *button = [[UIButton alloc]init];
     [button setBackgroundImage:[UIImage imageNamed:@"dijiaofankui"] forState:UIControlStateNormal];
@@ -148,15 +152,15 @@
     [self.view addSubview:zxlabel];
     [zxlabel mas_makeConstraints:^(MASConstraintMaker *make) {
         //显示上
-//        make.top.mas_equalTo(textView.mas_bottom).offset(5);
-//        make.left.mas_equalTo(label.mas_right).offset(0);
-//        make.right.mas_equalTo(button.mas_left).offset(-40);
+        //        make.top.mas_equalTo(textView.mas_bottom).offset(5);
+        //        make.left.mas_equalTo(label.mas_right).offset(0);
+        //        make.right.mas_equalTo(button.mas_left).offset(-40);
         make.top.mas_equalTo(textView.mas_bottom).offset(10);
         //        make.bottom.mas_equalTo(@100);
         make.left.mas_equalTo(@240);
         make.right.mas_equalTo(@10);
-
-      
+        
+        
         
         
     }];
@@ -169,10 +173,10 @@
     self.zxTableView.dataSource = self;
     
     [self.zxTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
-//
-//    
-//    
-//    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardEnd:) name:UITextViewTextDidEndEditingNotification object:self.textView];
+    //
+    //
+    //
+    //    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardEnd:) name:UITextViewTextDidEndEditingNotification object:self.textView];
     
     
     
@@ -182,17 +186,17 @@
 {
     if(self.textView.text.length == 0)
     {
-//        MBProgressHUD *hud = [[MBProgressHUD alloc]init];
-//        hud.dimBackground = NO;
-//        [self.view addSubview:hud];
-//        [MBProgressHUD showSuccessMessage:@"请输入文字" afterDelay:1];
+        //        MBProgressHUD *hud = [[MBProgressHUD alloc]init];
+        //        hud.dimBackground = NO;
+        //        [self.view addSubview:hud];
+        //        [MBProgressHUD showSuccessMessage:@"请输入文字" afterDelay:1];
         [MBProgressHUD showErrorMessage:@"请输入反馈文字" afterDelay:1];
     }
     if(self.textView.text.length >=1 && self.textView.text.length <15)
     {
         [MBProgressHUD showSuccessMessage:@"亲,字数不足哦,需要满足15字哦" afterDelay:1];
         //返回上一页面
-//        [self.navigationController popViewControllerAnimated:YES];
+        //        [self.navigationController popViewControllerAnimated:YES];
     }
     if (self.textView.text.length >=15)
     {
@@ -248,33 +252,35 @@
 {
     
     //判断加上输入的字符，是否超过界限
-    NSLog(@"%zd",textView.text.length+1);
+    NSLog(@"%zd",textView.text.length);
     NSString *str = [NSString stringWithFormat:@"%@%@", textView.text, text];
     //字数显示
     [self.zxlaebl setText:[NSString stringWithFormat:@"%zd",self.zxlaebl.text.intValue - 1]];
-    if (str.length > 200)
+    
+    if (str.length >200)
     {
-      
+        
         textView.text = [textView.text substringToIndex:200];
-        [self.view endEditing:YES];
-        [self.textView endEditing:YES];
         return NO;
     }
+    
     
     return YES;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    NSLog(@"选中了第%li个cell", (long)indexPath.row);
+    //    NSLog(@"选中了第%li个cell", (long)indexPath.row);
     if(indexPath.row == 0)
     {
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"是否拨打电话:400-636-6113" preferredStyle:UIAlertControllerStyleAlert];
         [self presentViewController:alertController animated:YES completion:nil];
         UIAlertAction *left = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-//            NSLog(@"111");
+            //            NSLog(@"111");
         }];
         [alertController addAction:left];
         UIAlertAction *right = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-//            NSLog(@"22222");
+            NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",@"400-636-6113"];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+            
         }];
         [alertController addAction:right];
         
