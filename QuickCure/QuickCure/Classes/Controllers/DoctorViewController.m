@@ -106,12 +106,6 @@
 
 - (void)buttonClick:(UIButton *)button
 {
-//    if (!button.highlighted) {
-//        
-//        [button setImage:[UIImage imageNamed:@"kongxin"] forState:UIControlStateNormal];
-//        
-//        button.highlighted = 1;
-//    }
     
     if (self.isheight){
         
