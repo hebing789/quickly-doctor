@@ -13,7 +13,7 @@
 #define screemW    [UIScreen mainScreen].bounds.size.width
 #define screemH    [UIScreen mainScreen].bounds.size.height
 
-#define Wcolor [UIColor lightGrayColor]
+#define Wcolor [UIColor colorWithRed:0.3772 green:0.7495 blue:0.6667 alpha:0.53]
 @interface HomeViewController ()
 
 @property(nonatomic,weak)WeatherView* wView;
@@ -50,6 +50,8 @@
     WeatherView* wView=[[WeatherView alloc]init ];
     wView.backgroundColor=Wcolor;
     _wView=wView;
+   
+  
     [self.view addSubview:wView];
     //    wView.translatesAutoresizingMaskIntoConstraints = NO;
     
@@ -58,7 +60,7 @@
         
         make.top.equalTo(self.mas_topLayoutGuideBottom).offset(0);
         make.left.equalTo(self.view.mas_left).offset(0);
-        make.height.equalTo(@110);
+        make.height.equalTo(@90);
         make.right.equalTo(self.view.mas_right).offset(0);
         
         
@@ -73,7 +75,7 @@
 -(void)setVideo{
     
 //    DWInfiniteScrollView* videoView=[[DWInfiniteScrollView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.wView.frame), screemW, 150)];
-     DWInfiniteScrollView* videoView=[[DWInfiniteScrollView alloc]initWithFrame:CGRectMake(0, 64+110, screemW, 200)];
+     DWInfiniteScrollView* videoView=[[DWInfiniteScrollView alloc]initWithFrame:CGRectMake(0, 64+90, screemW, 200)];
     
     
     
