@@ -10,10 +10,15 @@
 
 @implementation HomeMenueButton
 
-- (CGRect)imageRectForContentRect:(CGRect)contentRect{
-    
-    return CGRectMake(0, 0, 0, 0);
-}
+//- (CGRect)imageRectForContentRect:(CGRect)contentRect{
+//
+//    ;
+//}
+//
+//- (CGRect)titleRectForContentRect:(CGRect)contentRect
+//{
+//    ;
+//}
 
 
 @end
