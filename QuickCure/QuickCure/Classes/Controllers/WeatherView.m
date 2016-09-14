@@ -8,8 +8,8 @@
 
 #import "WeatherView.h"
 
-#define WeaColor [UIColor blueColor]
-
+#define WeaColor [UIColor colorWithRed:0.0939 green:0.7285 blue:0.5893 alpha:1.0]
+#define KFontSize [UIFont systemFontOfSize:14]
 @interface WeatherView()
 
 @property(nonatomic,strong)UIImageView* ImgView_wea;
@@ -40,7 +40,11 @@
 //    重新获取数据
     
     [WeatherModel modelWithSucess:^(NSArray *ary) {
-        self.dataAry=ary;
+        //解决bug
+        if(ary.count!=0&&ary)
+        {
+            self.dataAry=ary;
+        }
         
     } andError:^{
         
@@ -71,6 +75,10 @@
             model=temmodel;
         }
     }
+    
+    if (!model) {
+        model=self.dataAry[0];
+    }
     //数组第一个数据就可以
     
     NSLog(@"%@",model);
@@ -100,6 +108,53 @@
     return self;
 }
 
+-(void)layoutSubviews{
+    
+    [super layoutSubviews];
+    
+    _ImgView_wea.center=CGPointMake(0, self.height/2);//这个+10才好看
+    
+    _ImgView_wea.x=15;
+    [_lb_wea sizeToFit];
+    
+    _lb_wea.center=CGPointMake(0, self.height/2);
+    
+    _lb_wea.x=CGRectGetMaxX(_ImgView_wea.frame)+10;
+    
+    [_but_location sizeToFit];
+    
+    _but_location.center=CGPointMake(0, self.height/2);
+    _but_location.x=CGRectGetMaxX(_lb_wea.frame)+20;
+    
+    [_lb_temdata sizeToFit];
+    
+    _lb_temdata.center=CGPointMake(0, self.height/4);
+    
+    _lb_temdata.x=screemW-30-_lb_temdata.width;
+    
+    [_lb_tem sizeToFit];
+    
+    //        _lb_tem.center=CGPointMake(0, 10);
+    _lb_tem.center=CGPointMake(0, self.height/4);
+    
+    _lb_tem.x=CGRectGetMinX(_lb_temdata.frame)-10-_lb_tem.width;
+    
+    [_lb_dataData sizeToFit];
+    
+    _lb_dataData.center=CGPointMake(0, self.height-10-_lb_dataData.height);
+    
+    _lb_dataData.x=screemW-10-_lb_dataData.width;
+    
+    [_lb_data sizeToFit];
+    
+    _lb_data.center=CGPointMake(0,self.height-10-_lb_dataData.height );
+    
+    _lb_data.x=CGRectGetMinX(_lb_dataData.frame)-10-_lb_data.width;
+    
+
+
+    
+}
 -(void)setUI{
 //        self.backgroundColor=[UIColor redColor];
     
@@ -107,20 +162,22 @@
     [WeatherModel modelWithSucess:^(NSArray *ary) {
         
         
+        
         self.dataAry = ary;
         WeatherModel* model=self.dataAry[0];
 //        NSLog(@"%@",model);
-        
+      
+        UIView* centerMargin=[[UIView alloc]init];
+        centerMargin.frame=CGRectMake(screemW/2-0.75, 10, 1.5, self.height-20);
+        centerMargin.backgroundColor=[UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];
+        [self addSubview:centerMargin];
            _ImgView_wea=[[UIImageView alloc]init];
         
         //天气图片
         [_ImgView_wea sd_setImageWithURL:[NSURL URLWithString:model.dayPictureUrl]];
         
         _ImgView_wea.bounds=CGRectMake(0, 0, 40, 40);
-        
-        _ImgView_wea.center=CGPointMake(0, self.height/2);//这个+10才好看
-        
-        _ImgView_wea.x=20;
+       
 //        _ImgView_wea.y=self.height/2;//这个不算设置中心,不好看
         
         [self addSubview:_ImgView_wea];
@@ -132,11 +189,9 @@
         
         _lb_wea.textColor=WeaColor;
         
-        [_lb_wea sizeToFit];
+        _lb_wea.font=KFontSize;
         
-        _lb_wea.center=CGPointMake(0, self.height/2);
         
-        _lb_wea.x=CGRectGetMaxX(_ImgView_wea.frame)+10;
         
 //        NSAttributedString* abstring=[NSAttributedString alloc]initWithString:nil attributes:{NSFontAttributeName,}];
 //        [_lb_wea setAttributedText:abstring];
@@ -156,10 +211,8 @@
 
         [_but_location setTitleColor:WeaColor forState:UIControlStateNormal];
         
-        [_but_location sizeToFit];
-
-        _but_location.center=CGPointMake(0, self.height/2);
-        _but_location.x=CGRectGetMaxX(_lb_wea.frame)+20;
+        _but_location.titleLabel.font= KFontSize;
+        
         [self addSubview:_but_location];
         
         [_but_location addTarget:self action:@selector(toCity) forControlEvents:UIControlEventTouchUpInside];
@@ -175,13 +228,10 @@
         
         _lb_temdata.textColor=WeaColor;
         
-        [_lb_temdata sizeToFit];
+        _lb_temdata.font= KFontSize;
         
-        _lb_temdata.center=CGPointMake(0, self.height/4);
         
-        _lb_temdata.x=screemW-30-_lb_temdata.width;
-        
-//        _lb_temdata.y=self.height/2;
+        //        _lb_temdata.y=self.height/2;
         [self addSubview:_lb_temdata];
         
 
@@ -193,13 +243,8 @@
         
         _lb_tem.textColor=WeaColor;
         
-        [_lb_tem sizeToFit];
-        
-//        _lb_tem.center=CGPointMake(0, 10);
-        _lb_tem.center=CGPointMake(0, self.height/4);
-        
-        _lb_tem.x=CGRectGetMinX(_lb_temdata.frame)-10-_lb_tem.width;
-        
+        _lb_tem.font= KFontSize;
+
     
         [self addSubview:_lb_tem];
         
@@ -211,14 +256,9 @@
         _lb_dataData.textAlignment=NSTextAlignmentLeft;
         
         _lb_dataData.textColor=WeaColor;
+        _lb_dataData.font= KFontSize;
+
         
-        [_lb_dataData sizeToFit];
-        
-        _lb_dataData.center=CGPointMake(0, self.height-10-_lb_dataData.height);
-        
-        _lb_dataData.x=screemW-10-_lb_dataData.width;
-        
-       
         [self addSubview:_lb_dataData];
         
 
@@ -232,13 +272,8 @@
         
         _lb_data.textColor=WeaColor;
         
-        [_lb_data sizeToFit];
-        
-        _lb_data.center=CGPointMake(0,self.height-10-_lb_dataData.height );
-        
-        _lb_data.x=CGRectGetMinX(_lb_dataData.frame)-10-_lb_data.width;
-        
-       
+        _lb_data.font= KFontSize;
+
         [self addSubview:_lb_data];
         
         
