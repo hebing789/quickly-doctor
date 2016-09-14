@@ -9,7 +9,7 @@
 #import "HomeViewController.h"
 #import "WeatherView.h"
 #import "CityableViewController.h"
-#import "DWInfiniteScrollView.h"
+#import "VideoScrollView.h"
 #define screemW    [UIScreen mainScreen].bounds.size.width
 #define screemH    [UIScreen mainScreen].bounds.size.height
 
@@ -74,8 +74,7 @@
 
 -(void)setVideo{
     
-//    DWInfiniteScrollView* videoView=[[DWInfiniteScrollView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.wView.frame), screemW, 150)];
-     DWInfiniteScrollView* videoView=[[DWInfiniteScrollView alloc]initWithFrame:CGRectMake(0, 64+90, screemW, 200)];
+
     
     
     
@@ -90,8 +89,6 @@
     
     
     
-    videoView.backgroundColor=[UIColor blueColor];
-    [self.view addSubview:videoView];
 }
 
 -(void)setMenue{
