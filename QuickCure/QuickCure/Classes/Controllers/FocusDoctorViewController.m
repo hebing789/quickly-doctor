@@ -12,7 +12,7 @@
 #import "NetWorkTool.h"
 #import "HMModel.h"
 #import "HMTableViewCell.h"
-#import "DoctorController.h"
+#import "DoctorViewController.h"
 @interface FocusDoctorViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic,strong)UITableView *tableView;
@@ -49,7 +49,7 @@
     
     [HMModel modelWithSuccess:^(NSArray<HMModel *> *mArray) {
         self.modelArray = mArray;
-//        NSLog(@"%@",self.modelArray);
+        //        NSLog(@"%@",self.modelArray);
     } error:^{
         
     }];
@@ -84,7 +84,52 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    DoctorController *vc = [[DoctorController alloc]init];
+    DoctorViewController *vc = [[DoctorViewController alloc]init];
+    
+    HMModel *model = self.modelArray[indexPath.section];
+    
+    vc.imageIcon.image = [UIImage imageNamed:@"illness_img_person.png"];
+    
+    vc.nameLable.text = model.doctor_name;
+    
+    vc.nameLable.font = [UIFont systemFontOfSize:18];
+    
+    vc.titleLable.text = model.doctor_title_name;
+    
+    vc.titleLable.textColor = [UIColor grayColor];
+    
+    vc.titleLable.font = [UIFont systemFontOfSize:16];
+    
+    vc.companyLable.text = model.hospital_name;
+    
+    vc.companyLable.font = [UIFont systemFontOfSize:16];
+    
+    vc.companyLable.textColor = [UIColor grayColor];
+    
+    [vc.plusBtn setImage:[UIImage imageNamed:@"yuyueliang"] forState:UIControlStateNormal];
+    
+    [vc.plusBtn setTitle:[NSString stringWithFormat:@"%d",19] forState:UIControlStateNormal];
+    
+    [vc.plusBtn setTitleColor:[UIColor colorWithRed:(32 * 1.0)/255 green:(197 * 1.0)/255 blue:(197*1.0) /255 alpha:1] forState:UIControlStateNormal];
+    
+    vc.plusBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    
+    [vc.flowerBtn setImage:[UIImage imageNamed:@"xianhua"] forState:UIControlStateNormal];
+    
+    [vc.flowerBtn setTitle:[NSString stringWithFormat:@"%d",20] forState:UIControlStateNormal];
+    
+    [vc.flowerBtn setTitleColor:[UIColor colorWithRed:(32 * 1.0)/255 green:(197 * 1.0)/255 blue:(197*1.0) /255 alpha:1] forState:UIControlStateNormal];
+    
+    vc.flowerBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    
+    [vc.saveBtn setImage:[UIImage imageNamed:@"jinqi"] forState:UIControlStateNormal];
+    
+    [vc.saveBtn setTitle:[NSString stringWithFormat:@"%d",44] forState:UIControlStateNormal];
+    
+    [vc.saveBtn setTitleColor:[UIColor colorWithRed:(32 * 1.0)/255 green:(197 * 1.0)/255 blue:(197*1.0) /255 alpha:1] forState:UIControlStateNormal];
+    
+    vc.saveBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -92,6 +137,8 @@
 {
     return 0.1;
 }
+
+
 
 
 @end
