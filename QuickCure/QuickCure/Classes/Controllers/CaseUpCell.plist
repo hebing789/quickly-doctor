@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>title</key>
+		<string>疾病类型</string>
+		<key>label</key>
+		<string>请选择</string>
+		<key>img</key>
+		<string>jt</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>疾病细分</string>
+		<key>label</key>
+		<string>请选择</string>
+		<key>img</key>
+		<string>jt</string>
+	</dict>
+</array>
+</plist>

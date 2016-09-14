@@ -1,0 +1,33 @@
+//
+//  QuickCure_Header.pch
+//  QuickCure
+//
+//  Created by haoge on 16/9/10.
+//  Copyright © 2016年 haoge. All rights reserved.
+//
+
+#ifndef QuickCure_Header_pch
+#define QuickCure_Header_pch
+
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
+
+#import "BaseViewController.h"
+#import "BaseNaviController.h"
+#import "HomeViewController.h"
+
+#import <JASidePanelController.h>
+#import <UIViewController+JASidePanel.h>
+
+#import "ConstntDefine.h"
+#import <Masonry/Masonry.h>
+#import <AFNetworking/AFNetworking.h>
+
+#import "ViewController.h"
+#import "UIView+UIframe.h"
+#import "UIImageView+WebCache.h"
+#define screemW    [UIScreen mainScreen].bounds.size.width
+#define screemH    [UIScreen mainScreen].bounds.size.height
+
+#endif /* QuickCure_Header_pch */
