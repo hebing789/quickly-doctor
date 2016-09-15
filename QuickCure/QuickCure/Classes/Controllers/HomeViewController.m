@@ -9,7 +9,8 @@
 #import "HomeViewController.h"
 #import "WeatherView.h"
 #import "CityableViewController.h"
-#import "VideoScrollView.h"
+#import <UIImageView+WebCache.h>
+#import "VideoCollectionView.h"
 #define screemW    [UIScreen mainScreen].bounds.size.width
 #define screemH    [UIScreen mainScreen].bounds.size.height
 
@@ -62,34 +63,46 @@
         make.left.equalTo(self.view.mas_left).offset(0);
         make.height.equalTo(@90);
         make.right.equalTo(self.view.mas_right).offset(0);
-        
-        
-        
+ 
     }];
-    
-   
-    
-    
+ 
 }
 
 -(void)setVideo{
+    VideoCollectionView* VideoView=[[VideoCollectionView alloc]init];
+//                                    WithFrame:CGRectMake(0, 64+90, screemW, 200)];
     
+    VideoView.backgroundColor=[UIColor blueColor];
+    [self.view addSubview:VideoView];
+    //这样写,刚开始没有frame,内部要给一个bunds
+    [VideoView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.wView.mas_bottom).offset(0);
+        make.left.equalTo(self.view.mas_left).offset(0);
+        make.height.equalTo(@200);
+        make.right.equalTo(self.view.mas_right).offset(0);
+    }];
 
-    VideoScrollView* videoView=[[VideoScrollView alloc]initWithFrame:CGRectMake(0, 64+90, screemW, 200)];
-    videoView.backgroundColor=[UIColor blueColor];
-    
-    [self.view addSubview:videoView];
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    VideoView.videoAry= @[@"http://img.guahao.com/portal_upload/rollingnews/1453447883150.jpg",
+                          @"http://img.guahao.com/portal_upload/mediafocus/1461826474435.jpg",
+                          @"http://img.guahao.com/portal_upload/rollingnews/1461574027543.jpg"];
+   
+    UIImageView* centerImgView=[[UIImageView alloc]init];
+    centerImgView.image=[UIImage imageNamed:@"yj"];
+       [self.view addSubview:centerImgView];
+    [centerImgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(VideoView.mas_bottom).offset(20);
+        make.left.equalTo(self.view.mas_left).offset(10);
+        make.height.equalTo(@22);
+        make.width.equalTo(@8);
+    }];
+    UILabel* centerLable=[[UILabel alloc]init];
+    centerLable.text=@"名医通";
+    centerLable.font=[UIFont systemFontOfSize:20];
+    [self.view addSubview:centerLable];
+    [centerLable mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(VideoView.mas_bottom).offset(20);
+        make.left.equalTo(centerImgView.mas_right).offset(10);
+    }];
     
     
 }

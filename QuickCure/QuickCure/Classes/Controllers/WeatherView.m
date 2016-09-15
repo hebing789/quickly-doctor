@@ -81,7 +81,7 @@
     }
     //数组第一个数据就可以
     
-    NSLog(@"%@",model);
+//    NSLog(@"%@",model);
     
     //天气图片
     [_ImgView_wea sd_setImageWithURL:[NSURL URLWithString:model.dayPictureUrl]];
@@ -95,7 +95,8 @@
     _lb_temdata.text=model.temperature;
     
     _lb_dataData.text=model.temDate;
-    
+    //刷新数据的时候不会重新调用layoutsubbiews
+    [self makeSizeFit];
 
 }
 
@@ -112,6 +113,10 @@
     
     [super layoutSubviews];
     
+   
+    [self makeSizeFit];
+}
+-(void)makeSizeFit{
     _ImgView_wea.center=CGPointMake(0, self.height/2);//这个+10才好看
     
     _ImgView_wea.x=15;
@@ -127,6 +132,11 @@
     _but_location.x=CGRectGetMaxX(_lb_wea.frame)+20;
     
     [_lb_temdata sizeToFit];
+    
+        if (CGRectGetMaxX(_but_location.frame)>screemW/2) {
+            _but_location.x= _but_location.x=CGRectGetMaxX(_lb_wea.frame)+8;
+    
+        }
     
     _lb_temdata.center=CGPointMake(0, self.height/4);
     
@@ -151,7 +161,7 @@
     
     _lb_data.x=CGRectGetMinX(_lb_dataData.frame)-10-_lb_data.width;
     
-
+    
 
     
 }
