@@ -44,9 +44,21 @@
     [self configureUI];
     
     [self setupUI];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeLogStatue:) name:@"logout" object:nil];
+//         postNotificationName:self object:@"logout"];
+    NSLog(@"%@",NSHomeDirectory());
     
     
+}
+
+-(void)changeLogStatue:(NSNotification*) notice{
     
+    
+    //这样写多次重启登录后,连页面都没有了,可以用hidden,.懒加载注意
+//    [self.loginBGView removeFromSuperview];
+//    [self.view addSubview:self.noLoginBGView];
+    self.loginBGView.hidden=YES;
+    self.noLoginBGView.hidden=NO;
     
 }
 
@@ -76,17 +88,20 @@
     //先从用户偏好设置取值
     //1.获取NSUserDefaults对象
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    //读取保存的数据
+    //读取保存的数据//记住密码登录
     NSString *str1 = [defaults objectForKey:@"__textstr1"];
     NSString *str2 = [defaults objectForKey:@"__textstr2"];
     NSLog(@"%@",str1);
     NSLog(@"%@",str2);
-    [self.view addSubview:self.noLoginBGView];
+    [self.view addSubview: self.noLoginBGView];
+    [self.view addSubview:self.loginBGView];
+
     [self.view addSubview:self.tableview];
-    
+//    刚开始用户为1,密码为1,后来按照注册的名称和密码登录
     if([str1 isEqualToString:@"1"]&&[str2 isEqualToString:@"1"]){
-        [self.noLoginBGView removeFromSuperview];
-        [self.view addSubview:self.loginBGView];
+        self.noLoginBGView.hidden=YES;
+//        [self.noLoginBGView removeFromSuperview];
+//        [self.view addSubview:self.loginBGView];
         [self.tableview mas_makeConstraints:^(MASConstraintMaker *make) {
             //别忘了相对位置
             make.top.mas_equalTo(self.loginBGView.mas_bottom);
@@ -94,9 +109,9 @@
             make.width.mas_equalTo(SCREEN_LEFT_WIDTH);
         }];
     }else{
-        
-        [self.view addSubview:self.tableview];
-        
+        //不要重复添加
+//        [self.view addSubview:self.tableview];
+        self.loginBGView.hidden=YES;
         [self.tableview mas_makeConstraints:^(MASConstraintMaker *make) {
             //别忘了相对位置
             make.top.mas_equalTo(self.noLoginBGView.mas_bottom);
@@ -391,7 +406,9 @@
 -(void)changeView{
     
     //[self.view addSubview:self.noLoginBGView];
-    [self.view addSubview:self.loginBGView];
+//    [self.view addSubview:self.loginBGView];
+    self.noLoginBGView.hidden=YES;
+    self.loginBGView.hidden=NO;
     [self.tableview mas_makeConstraints:^(MASConstraintMaker *make) {
         //别忘了相对位置
         make.top.mas_equalTo(self.loginBGView.mas_bottom);

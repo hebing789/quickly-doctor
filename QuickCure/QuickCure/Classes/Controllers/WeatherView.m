@@ -7,6 +7,7 @@
 //
 
 #import "WeatherView.h"
+#import "BaseViewController.h"
 
 #define WeaColor [UIColor colorWithRed:0.0939 green:0.7285 blue:0.5893 alpha:1.0]
 #define KFontSize [UIFont systemFontOfSize:14]
@@ -316,6 +317,7 @@
         
         
         [[self viewController].navigationController popToRootViewControllerAnimated:YES];
+       
     }];
     //不好看
 //    UINavigationController* nv=[[UINavigationController alloc]initWithRootViewController:cityController];
@@ -323,8 +325,9 @@
 //       [[self viewController] presentViewController:nv animated:YES completion:nil];
     
     [[self viewController].navigationController pushViewController:cityController animated:YES];
-
     
+//    必须继承与baseUivewcontrller的才有这个方法,由于,用的uivew写的,不具有这个功能
+//     [[self viewController] jumpToOtherViewController:cityController];
 }
 
 

@@ -96,6 +96,18 @@
         [self presentViewController:alertController animated:YES completion:nil];
         UIAlertAction *top = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
             
+ //左旭
+            //注销用户//只对重新登录有效//原因,左边没销毁,应该销毁了重新加载//而且下次还有重新输入//这个会改密码,下次不能登录成功
+//            [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"__textstr1"];
+//            [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"__textstr2"];
+//            [[NSUserDefaults standardUserDefaults]synchronize];
+            //        要立即生效,可以用通知,或block传值
+            
+            
+            //写在点击确定的里面通知
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"logout" object:self];
+            
+
             [MBProgressHUD showSuccessMessage:@"注销成功" afterDelay:1];
             
         }];
@@ -104,6 +116,7 @@
             
         }];
         [alertController addAction:right];
+        
     }
 }
 
