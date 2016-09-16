@@ -81,7 +81,7 @@
         
         
         
-                    NSLog(@"%@",obj);
+//                    NSLog(@"%@",obj);
         
         //            NSString* rootKey=responseObject.keyEnumerator.nextObject;
         //                    NSLog(@"%@",rootKey);//status

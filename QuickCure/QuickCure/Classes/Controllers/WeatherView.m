@@ -7,6 +7,7 @@
 //
 
 #import "WeatherView.h"
+#import "BaseViewController.h"
 
 #define WeaColor [UIColor colorWithRed:0.0939 green:0.7285 blue:0.5893 alpha:1.0]
 #define KFontSize [UIFont systemFontOfSize:14]
@@ -81,7 +82,7 @@
     }
     //数组第一个数据就可以
     
-    NSLog(@"%@",model);
+//    NSLog(@"%@",model);
     
     //天气图片
     [_ImgView_wea sd_setImageWithURL:[NSURL URLWithString:model.dayPictureUrl]];
@@ -95,7 +96,8 @@
     _lb_temdata.text=model.temperature;
     
     _lb_dataData.text=model.temDate;
-    
+    //刷新数据的时候不会重新调用layoutsubbiews
+    [self makeSizeFit];
 
 }
 
@@ -112,6 +114,10 @@
     
     [super layoutSubviews];
     
+   
+    [self makeSizeFit];
+}
+-(void)makeSizeFit{
     _ImgView_wea.center=CGPointMake(0, self.height/2);//这个+10才好看
     
     _ImgView_wea.x=15;
@@ -127,6 +133,11 @@
     _but_location.x=CGRectGetMaxX(_lb_wea.frame)+20;
     
     [_lb_temdata sizeToFit];
+    
+        if (CGRectGetMaxX(_but_location.frame)>screemW/2) {
+            _but_location.x= _but_location.x=CGRectGetMaxX(_lb_wea.frame)+8;
+    
+        }
     
     _lb_temdata.center=CGPointMake(0, self.height/4);
     
@@ -151,7 +162,7 @@
     
     _lb_data.x=CGRectGetMinX(_lb_dataData.frame)-10-_lb_data.width;
     
-
+    
 
     
 }
@@ -306,6 +317,7 @@
         
         
         [[self viewController].navigationController popToRootViewControllerAnimated:YES];
+       
     }];
     //不好看
 //    UINavigationController* nv=[[UINavigationController alloc]initWithRootViewController:cityController];
@@ -313,8 +325,9 @@
 //       [[self viewController] presentViewController:nv animated:YES completion:nil];
     
     [[self viewController].navigationController pushViewController:cityController animated:YES];
-
     
+//    必须继承与baseUivewcontrller的才有这个方法,由于,用的uivew写的,不具有这个功能
+//     [[self viewController] jumpToOtherViewController:cityController];
 }
 
 

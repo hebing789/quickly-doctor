@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "E78B9BE63F1F518B78CDFAA522C2D6731E769A1F",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "E8797DC1270D7E5638F4933D0549CD80AF201A9E" : 0,
+    "E78B9BE63F1F518B78CDFAA522C2D6731E769A1F" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "C195581E-B7EA-4DE5-BD0F-B3B43846D7C2",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "E8797DC1270D7E5638F4933D0549CD80AF201A9E" : "qualictly%202\/",
+    "E78B9BE63F1F518B78CDFAA522C2D6731E769A1F" : "%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "QuickCure",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "QuickCure\/QuickCure.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/git.oschina.net\/hb789\/doctor4.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E78B9BE63F1F518B78CDFAA522C2D6731E769A1F"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/git.oschina.net\/hb789\/Doctor-2.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E8797DC1270D7E5638F4933D0549CD80AF201A9E"
+    }
+  ]
+}
