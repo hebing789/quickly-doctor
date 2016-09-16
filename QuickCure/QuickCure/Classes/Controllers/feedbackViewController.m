@@ -34,8 +34,8 @@
 
 //定义一个label属性 让外界调用
 @property(nonatomic,strong)UILabel *zxlaebl;
-
-
+//标记
+@property(nonatomic,assign)NSInteger preTextLength;
 
 @end
 
@@ -255,7 +255,7 @@
     NSLog(@"%zd",textView.text.length);
     NSString *str = [NSString stringWithFormat:@"%@%@", textView.text, text];
     //字数显示
-    [self.zxlaebl setText:[NSString stringWithFormat:@"%zd",self.zxlaebl.text.intValue - 1]];
+//    [self.zxlaebl setText:[NSString stringWithFormat:@"%zd",self.zxlaebl.text.intValue - 1]];
     
     if (str.length >200)
     {
@@ -267,6 +267,29 @@
     
     return YES;
 }
+#warning mark-----要判断的~
+- (void)textViewDidChange:(UITextView *)textView{
+    NSLog(@"1--%zd---%@",textView.text.length,textView.text);
+    
+    if (textView.text.length > self.preTextLength ) {
+        
+        [self.zxlaebl setText:[NSString stringWithFormat:@"%zd",self.zxlaebl.text.intValue - 1]];
+    }else{
+        [self.zxlaebl setText:[NSString stringWithFormat:@"%zd",self.zxlaebl.text.intValue + 1]];
+
+    }
+    
+    self.preTextLength = textView.text.length;
+}
+
+//- (void)textViewDidChangeSelection:(UITextView *)textView
+//{
+//    if (self.zxlaebl) {
+//        [self.zxlaebl setText:[NSString stringWithFormat:@"%zd",self.zxlaebl.text.intValue - textView.text.length]];
+//    }
+//    
+//}
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     //    NSLog(@"选中了第%li个cell", (long)indexPath.row);
     if(indexPath.row == 0)
