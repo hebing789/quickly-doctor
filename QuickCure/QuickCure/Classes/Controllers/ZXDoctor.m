@@ -34,6 +34,8 @@
 //定义第二个
 @property(nonatomic,strong)UIButton *select2Button;
 
+@property(nonatomic,weak) UILabel *secondLabel;
+
 @end
 
 @implementation ZXDoctor
@@ -87,6 +89,9 @@
         //            make.edges.equalTo(self.view).mas_offset(UIEdgeInsetsMake(155, 20, 470, 20));
         make.top.equalTo(xlabel.mas_bottom).offset(10);
         make.left.equalTo(self.view.mas_left).offset(10);
+        make.right.equalTo(self.view.mas_right).offset(-69 );
+        make.height.equalTo(@(screemH/16));
+        
         //            mak
         
     }];
@@ -130,6 +135,8 @@
         //            make.edges.equalTo(self.view).mas_offset(UIEdgeInsetsMake(210, 20, 415, 20));
         make.top.equalTo(firstView.mas_bottom).offset(10);
         make.left.equalTo(self.view.mas_left).offset(10);
+        make.right.equalTo(self.view.mas_right).offset(-69 );
+        make.height.equalTo(@(screemH/16));
         //            mak
         
         
@@ -137,6 +144,7 @@
     UILabel *secondLabel = [[UILabel alloc]init];
     secondLabel.textColor = [UIColor colorWithRed:0.7333 green:0.7294 blue:0.7608 alpha:1.0];
     secondLabel.text = @"请选择并发症(可多选)";
+    self.secondLabel=secondLabel;
     [self.secondView addSubview:secondLabel];
     [secondLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.secondView).mas_offset(UIEdgeInsetsMake(5, 5, 5, 0));
@@ -164,6 +172,8 @@
         //            make.edges.equalTo(self.view).mas_offset(UIEdgeInsetsMake(270, 20, 355, 20));
         make.top.equalTo(secondView.mas_bottom).offset(10);
         make.left.equalTo(self.view.mas_left).offset(10);
+        make.right.equalTo(self.view.mas_right).offset(-10 );
+        make.height.equalTo(@(screemH/16));
         
     }];
     UILabel *threeLabel = [[UILabel alloc]init];
@@ -182,6 +192,7 @@
     [self.threeView addSubview:threeButton];
     [threeButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.threeView).mas_offset(UIEdgeInsetsMake(15, 140, 15, 180));
+        
     }];
     UILabel *tureLabel = [[UILabel alloc]init];
     tureLabel.text = @"已确诊";
@@ -231,6 +242,8 @@
     [self.fourView addSubview:fourLabel];
     [fourLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.fourView).mas_offset(UIEdgeInsetsMake(5, 5, 5, 0));
+        make.right.equalTo(self.view.mas_right).offset(-10 );
+        make.height.equalTo(@(screemH/16));
     }];
     //receive 接受  unsolved未接受
     UIButton *receiveButton = [[UIButton alloc]init];
@@ -268,35 +281,9 @@
     }];
     
     
-    //文字
-    UILabel *textLabel = [[UILabel alloc]init];
-    textLabel.text = @"为您匹配到: 42 位医生";
-    textLabel.textAlignment = NSTextAlignmentCenter;
-    [self.view addSubview:textLabel];
-    [textLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view).mas_equalTo(UIEdgeInsetsMake(300, 0, 20, 0));
-    }];
     
-    //图片
-    UIImageView *ImageView =[[UIImageView alloc]init];
-    //    ImageView.backgroundColor = [UIColor redColor];
-    ImageView.image = [UIImage imageNamed:@"illness_img_person.png"];
-    [self.view addSubview:ImageView];
-    [ImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view).mas_equalTo(UIEdgeInsetsMake(500, 140, 80, 140));
-    }];
     
-    //按钮
-    UIButton *zxbutton = [[UIButton alloc]init];
-    zxbutton.backgroundColor = [UIColor colorWithRed:0.0706 green:0.6824 blue:0.6706 alpha:1.0];
-    //    [zxbutton setImage:[UIImage imageNamed:@"queren"] forState:UIControlStateNormal];
-    [zxbutton setTitle:@"就医申请" forState:UIControlStateNormal];
-    [zxbutton setTitle:@"皮卡 皮卡 啾啾揪 十万伏特" forState:UIControlStateHighlighted];
-    [self.view addSubview:zxbutton];
     
-    [zxbutton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view).mas_equalTo(UIEdgeInsetsMake(605, 10, 20, 10));
-    }];
 #warning 事先创好View  隐藏
     //创建一个View
     UIView *blewView = [[UIView alloc]init];
@@ -310,6 +297,8 @@
         //            make.edges.equalTo(self.view).mas_equalTo(UIEdgeInsetsMake(390, 20, 240, 20));
         make.top.equalTo(fourView.mas_bottom).offset(10);
         make.left.equalTo(self.view.mas_left).offset(10);
+//        make.right.equalTo(self.view.mas_right).offset(-69 );
+//        make.height.equalTo(@(screemH/16));
         
     }];
     //添加文字
@@ -324,6 +313,7 @@
     //隐藏view
     blewView.hidden = YES;
     
+    
     //图片
     UIImageView *blewImage = [[UIImageView alloc]init];
     blewImage.image = [UIImage imageNamed:@"illness_img_line.png"];
@@ -337,8 +327,50 @@
     [blewimage mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.blewView).mas_equalTo(UIEdgeInsetsMake(14, 305, 14, 20));
     }];
+    //文字
+    UILabel *textLabel = [[UILabel alloc]init];
+    textLabel.text = @"为您匹配到: 42 位医生";
+    textLabel.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:textLabel];
+    [textLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.edges.equalTo(self.view).mas_equalTo(UIEdgeInsetsMake(300, 0, 20, 0));
+        make.top.equalTo(fourView.mas_bottom).offset(70);
+        make.left.equalTo(self.view.mas_left).offset(10);
+                make.right.equalTo(self.view.mas_right).offset(-10 );
+                make.height.equalTo(@(40));
+        
+    }];
     
+    //图片
+    UIImageView *ImageView =[[UIImageView alloc]init];
+    //    ImageView.backgroundColor = [UIColor redColor];
+    ImageView.image = [UIImage imageNamed:@"illness_img_person.png"];
+    [self.view addSubview:ImageView];
+    [ImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.edges.equalTo(self.view).mas_equalTo(UIEdgeInsetsMake(500, 140, 80, 140));
+        make.top.equalTo(textLabel.mas_bottom).offset(10);
+        make.left.equalTo(self.view.mas_left).offset(screemW/2-45);
+        make.right.equalTo(self.view.mas_right).offset(-screemW/2+45);
+        make.height.equalTo(@(90));
+
+        
+    }];
+    //按钮
+    UIButton *zxbutton = [[UIButton alloc]init];
+    zxbutton.backgroundColor = [UIColor colorWithRed:0.0706 green:0.6824 blue:0.6706 alpha:1.0];
+    //    [zxbutton setImage:[UIImage imageNamed:@"queren"] forState:UIControlStateNormal];
+    [zxbutton setTitle:@"就医申请" forState:UIControlStateNormal];
+    [zxbutton setTitle:@"皮卡 皮卡 啾啾揪 十万伏特" forState:UIControlStateHighlighted];
+    [self.view addSubview:zxbutton];
     
+    [zxbutton mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.edges.equalTo(self.view).mas_equalTo(UIEdgeInsetsMake(605, 10, 20, 10));
+        make.top.equalTo(ImageView.mas_bottom).offset(20);
+        make.left.equalTo(self.view.mas_left).offset(10);
+        make.right.equalTo(self.view.mas_right).offset(-10);
+        make.height.equalTo(@(40));
+
+    }];
     
     UITapGestureRecognizer *tapGesutre1 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(mohuSearch:)];
     [firstView addGestureRecognizer:tapGesutre1];
@@ -415,6 +447,16 @@
 
 -(void)bingfazheng:(UITapGestureRecognizer *)tap
 {
+    SyndromeViewController* bingFaZheng=[[SyndromeViewController alloc]init];
+    [bingFaZheng setTempBlock:^(NSString * str) {
+       
+    
+        self.secondLabel.text=str;
+        self.secondLabel.textColor=[UIColor blackColor];
+        
+    }];
+    [self.navigationController pushViewController:bingFaZheng animated:YES];
+
     
     
     //        self.navigationController.navigationItem
@@ -422,8 +464,6 @@
 -(void)cureWay:(UITapGestureRecognizer *)tap
 {
     
-    SyndromeViewController* bingFaZheng=[[SyndromeViewController alloc]init];
-    [self.navigationController pushViewController:bingFaZheng animated:YES];
     
 }
 

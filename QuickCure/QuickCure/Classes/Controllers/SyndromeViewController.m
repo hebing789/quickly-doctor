@@ -107,11 +107,16 @@
        
         [button setTitle:@"已订阅" forState:UIControlStateNormal];
         [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        button.selected=YES;
+//        button.enabled=
     }
     else
     {
         [button setTitle:@"订阅" forState:UIControlStateNormal];
-        [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];    }
+        [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        button.selected=NO;
+        
+    }
 }
 
 - (void)clickLeftBarBtn
@@ -121,9 +126,9 @@
 
 - (void)clickRightBarBtn
 {
-    if (_tempBlock) {
-        _tempBlock(@"测试");
-    }
+    
+   [self.syndromeTableView reloadData];
+    
     NSLog(@"%@",self.syndromeString);
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -139,11 +144,32 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"syndromeCell" forIndexPath:indexPath];
     
     cell.textLabel.text = [self.infoModelArr[indexPath.row] complication_name];
-    cell.accessoryView = self.subscribeBtn;
+    UIButton* but=(UIButton*)cell.accessoryView;
+    if (but.selected) {
+        
+        if (self.syndromeString.length!=0) {
+            [self.syndromeString appendString:@","];
+        }
+        
+        [self.syndromeString appendString:cell.textLabel.text];
+       
+        NSLog(@">>>>>>%@",self.syndromeString);
+        if (_tempBlock) {
+            
+            _tempBlock(self.syndromeString);
+        }
+
+    }
+    
+        cell.accessoryView = self.subscribeBtn;
     
     return cell;
 }
 
+//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+//    
+//    
+//}
 
 
 - (void)didReceiveMemoryWarning {
