@@ -34,7 +34,7 @@
     
     [[NetWorkTool shareManager]POST_RequestWithUrlString:@"http://iosapi.itcast.cn/searchCI3List.json.php" parmas:parmas successBloock:^(NSDictionary *responseObject) {
         
-                NSLog(@"%@",responseObject);
+//                NSLog(@"%@",responseObject);
         NSMutableArray *mArray = [NSMutableArray array];
         //        NSString *rootKey =  responseObject.keyEnumerator.nextObject;
         //        NSArray<NSDictionary *> *array = responseObject[rootKey];
