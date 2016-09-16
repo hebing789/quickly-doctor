@@ -11,6 +11,7 @@
 #import "CityableViewController.h"
 #import <UIImageView+WebCache.h>
 #import "VideoCollectionView.h"
+#import "SyndromeViewController.h"
 #define screemW    [UIScreen mainScreen].bounds.size.width
 #define screemH    [UIScreen mainScreen].bounds.size.height
 
@@ -175,7 +176,7 @@
     [commonwealBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     commonwealBtn.titleEdgeInsets = UIEdgeInsetsMake(70, -50, 0, 0);
     
-    [commonwealBtn addTarget:self action:@selector(pushController:) forControlEvents:UIControlEventTouchUpInside];
+    [commonwealBtn addTarget:self action:@selector(pushWebController:) forControlEvents:UIControlEventTouchUpInside];
     
     /**
      *  肿瘤
@@ -248,6 +249,13 @@
 }
 
 - (void)pushController:(UIButton *)button
+{
+    NSLog(@"----------------------%@",button.titleLabel.text);
+    [self.navigationController pushViewController:[[SyndromeViewController alloc] init] animated:YES];
+    
+}
+
+- (void)pushWebController:(UIButton *)button
 {
     NSLog(@"----------------------%@",button.titleLabel.text);
 }
