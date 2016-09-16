@@ -415,15 +415,15 @@
 
 -(void)bingfazheng:(UITapGestureRecognizer *)tap
 {
-    
+    SyndromeViewController* bingFaZheng=[[SyndromeViewController alloc]init];
+    [self.navigationController pushViewController:bingFaZheng animated:YES];
     
     //        self.navigationController.navigationItem
 }
 -(void)cureWay:(UITapGestureRecognizer *)tap
 {
     
-    SyndromeViewController* bingFaZheng=[[SyndromeViewController alloc]init];
-     [self.navigationController pushViewController:bingFaZheng animated:YES];
+    
   
 }
 
