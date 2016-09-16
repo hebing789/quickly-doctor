@@ -19,6 +19,7 @@
 @interface HomeViewController ()
 
 @property(nonatomic,weak)WeatherView* wView;
+@property(nonatomic,weak)VideoCollectionView* VideoView;
 @end
 
 @implementation HomeViewController
@@ -42,6 +43,9 @@
     [self setVideo];
     
     [self setMenue];
+    
+    [self setNetWork];
+    
   
   }
 
@@ -71,15 +75,18 @@
 
 -(void)setVideo{
     VideoCollectionView* VideoView=[[VideoCollectionView alloc]init];
-//                                    WithFrame:CGRectMake(0, 64+90, screemW, 200)];
+//    VideoCollectionView* VideoView=[[VideoCollectionView alloc]initWithFrame:CGRectMake(0, 64+90, screemW, screemH-(2.0/3.0)*screemW-64-90-22-40)];
+//                                    iniWithFrame:CGRectMake(0, 64+90, screemW, self.view.height-2/3*self.view.width-64-90)];
     
     VideoView.backgroundColor=[UIColor blueColor];
+    self.VideoView=VideoView;
     [self.view addSubview:VideoView];
     //这样写,刚开始没有frame,内部要给一个bunds
     [VideoView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.wView.mas_bottom).offset(0);
         make.left.equalTo(self.view.mas_left).offset(0);
-        make.height.equalTo(@200);
+        make.height.equalTo(@(screemH-(2.0/3.0)*screemW-64-90-40-22));
+//        make.height.equalTo(@(200));
         make.right.equalTo(self.view.mas_right).offset(0);
     }];
 
@@ -258,6 +265,78 @@
 - (void)pushWebController:(UIButton *)button
 {
     NSLog(@"----------------------%@",button.titleLabel.text);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-(void)setNetWork{
+    
+    AFNetworkReachabilityManager *reach = [AFNetworkReachabilityManager sharedManager];
+    
+    //当网络类型改变的时候,block就会被调用
+    [reach setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        
+        /*
+         AFNetworkReachabilityStatusUnknown          = -1,
+         AFNetworkReachabilityStatusNotReachable     = 0,
+         AFNetworkReachabilityStatusReachableViaWWAN = 1,
+         AFNetworkReachabilityStatusReachableViaWiFi = 2,
+         */
+        
+        switch (status) {
+            case AFNetworkReachabilityStatusUnknown:
+//                NSLog(@"不知道");
+                break;
+            case AFNetworkReachabilityStatusNotReachable:
+               
+            {  UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"网络没连接" preferredStyle:UIAlertControllerStyleActionSheet];
+                [self presentViewController:alertController animated:YES completion:nil];
+                
+        }
+                break;
+            case AFNetworkReachabilityStatusReachableViaWWAN:
+//                NSLog(@"3G");
+                break;
+            case AFNetworkReachabilityStatusReachableViaWiFi:
+//                NSLog(@"wifi");
+                break;
+            default:
+                break;
+        }
+    }];
+    
+    //开启监控
+    [reach startMonitoring];
+    
+    
 }
 
 @end

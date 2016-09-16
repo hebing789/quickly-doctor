@@ -150,7 +150,7 @@
 {
     UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.MidView.frame), [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - CGRectGetMaxY(self.MidView.frame))style:UITableViewStyleGrouped];
     
-    tableView.backgroundColor = [UIColor grayColor];
+    tableView.backgroundColor = [UIColor lightGrayColor];
     
     tableView.delegate = self;
     
@@ -201,9 +201,9 @@
     
     [rightBtn setTitleColor:[UIColor colorWithRed:(32 * 1.0)/255 green:(197 * 1.0)/255 blue:(197*1.0) /255 alpha:1] forState:UIControlStateHighlighted];
     
-    [leftBtn addTarget:self action:@selector(leftBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [leftBtn addTarget:self action:@selector(leftBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     
-    [rightBtn addTarget:self action:@selector(rightBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [rightBtn addTarget:self action:@selector(rightBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     
     [MidView addSubview:leftBtn];
     
@@ -212,7 +212,7 @@
     [self.view addSubview:MidView];
 }
 
--(void)leftBtnClick
+-(void)leftBtnClick:(UIButton *)leftBtn
 {
     self.btnTage = 10;
     
@@ -220,7 +220,7 @@
     
 }
 
--(void)rightBtnClick
+-(void)rightBtnClick:(UIButton *)rightBtn
 {
     self.btnTage = 20;
     

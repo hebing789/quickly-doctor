@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface CaseThrCell : UITableViewCell
-
+@property(nonatomic,weak)UIButton *btn;
 @end
