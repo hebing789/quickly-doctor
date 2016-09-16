@@ -12,13 +12,39 @@
 @end
 @interface CaseManagerViewController ()<UITableViewDataSource,UITableViewDelegate>
 
+@property(nonatomic,strong)NSMutableArray* dataAry;
+@property(nonatomic,weak)UITableView *blView ;
 @end
 
 @implementation CaseManagerViewController
 
+//-(NSMutableArray *)dataAry{
+//    
+//    if (!_dataAry) {
+//        _dataAry=[NSMutableArray new];
+//        
+//        
+//    }
+//    
+//    return  _dataAry;
+//}
+
+-(void)setDataAry:(NSMutableArray *)dataAry{
+    
+    [dataAry enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+       
+        [_dataAry addObject:obj];
+    }];
+    
+    
+    [self.blView reloadData];
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    _dataAry=[NSMutableArray new];
     self.navigationController.navigationBar.translucent = NO;
     
     UIImageView *personImgv = [[UIImageView alloc] init];
@@ -162,13 +188,15 @@
     
     //中间的病历
     UITableView *blView = [[UITableView alloc] init];
-    
+    self.blView=blView;
     blView.rowHeight = 140;
 //    blView.allowsSelection = NO;
     
     [self.view addSubview:blView];
     blView.delegate = self;
-    
+    blView.dataSource=self;
+    [blView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"bl"];
+//    self.blView.rowHeight=40;
     [blView mas_makeConstraints:^(MASConstraintMaker *make) {
        
         make.top.equalTo(line.mas_bottom).offset(0);
@@ -207,20 +235,47 @@
 
 - (void)clickBtn:(UIButton *)btn
 {
-    [self.navigationController pushViewController:[[CaseCreateViewController alloc] init] animated:YES];
+    
+    CaseCreateViewController* caseController=  [[CaseCreateViewController alloc] init];
+    
+    
+    [caseController setDataBlock:^(NSMutableArray * ary) {
+       
+        self.dataAry=ary;
+        
+    }];
+    [self.navigationController pushViewController:caseController animated:YES];
 }
 
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return self.dataAry.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [[UITableViewCell alloc] init];
+//    UITableViewCell *cell = [[UITableViewCell alloc] init];
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"bl" forIndexPath:indexPath];
+    if ([self.dataAry[indexPath.item] isKindOfClass:[UIImage class]]) {
+        cell.imageView.image=self.dataAry[indexPath.item];
+        cell.imageView.bounds=CGRectMake(0, 0, 100, 100);
+    }
+    else{
+        cell.textLabel.text=self.dataAry[indexPath.item];
+    }
+    
     return cell;
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+//    有图片返回40
+//    UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"bl" forIndexPath:indexPath]
+//    if (cell.imageView.imag) {
+//        
+//    }
+    return 40;
+}
 @end

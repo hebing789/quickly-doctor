@@ -11,5 +11,6 @@
 @interface CaseCreateViewController : UIViewController
 
 
+@property(nonatomic,copy) void(^dataBlock)(NSMutableArray* ary);
 
 @end
