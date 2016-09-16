@@ -9,9 +9,9 @@
 #import "CaseUpCell.h"
 
 @interface CaseUpCell ()
-@property(nonatomic,strong)UILabel *titleLB;
-@property(nonatomic,strong)UILabel *labelLB;
-@property(nonatomic,strong)UIImageView *imgv;
+//@property(nonatomic,strong)UILabel *titleLB;
+//@property(nonatomic,strong)UILabel *labelLB;
+//@property(nonatomic,strong)UIImageView *imgv;
 
 @end
 

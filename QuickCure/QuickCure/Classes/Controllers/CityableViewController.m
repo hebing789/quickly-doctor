@@ -34,10 +34,15 @@
     self.dataAry;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:self.useId];
     
+    self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"home_nav_button_back"] style:UIBarButtonItemStyleDone target:self action:@selector(back)];
    
 }
 
-
+-(void)back{
+    
+    [self.navigationController popViewControllerAnimated:YES];
+    
+}
 
 
 

@@ -23,7 +23,15 @@
 - (NSArray *)array
 {
     if (!_array) {
-        _array = @[@"肿瘤科",@"心血管科",@"血液科",@"神经科",@"骨科"];
+        
+        if (self.item==0) {
+            _array = @[@"肿瘤科",@"心血管科",@"血液科",@"神经科",@"骨科"];
+        }
+        if (self.item==1) {
+            _array = @[@"第1行",@"第2行",@"第3行",@"第4行",@"第5行",@"第6行",@"第7行",@"第8行",@"第9行",@"第10行"];
+
+        }
+        
     }
     return _array;
 }
@@ -58,6 +66,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (_dadaBlock) {
+        _dadaBlock(self.array[indexPath.row]);
+    }
+    
+    [self.navigationController popViewControllerAnimated:YES];
     
 }
 
