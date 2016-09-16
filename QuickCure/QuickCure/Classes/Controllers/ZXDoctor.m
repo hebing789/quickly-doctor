@@ -95,7 +95,7 @@
         //            make.edges.equalTo(self.view).mas_offset(UIEdgeInsetsMake(155, 20, 470, 20));
         make.top.equalTo(xlabel.mas_bottom).offset(10);
         make.left.equalTo(self.view.mas_left).offset(10);
-        make.right.equalTo(self.view.mas_right).offset(-69 );
+        make.right.equalTo(self.view.mas_right).offset(-10 );
         make.height.equalTo(@(screemH/16));
         
         //            mak
@@ -113,14 +113,26 @@
     fistmageView.image = [UIImage imageNamed:@"illness_img_line.png"];
     [self.firstView addSubview:fistmageView];
     [fistmageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.firstView).mas_offset(UIEdgeInsetsMake(5, 280, 5, 54));
+//        make.edges.equalTo(self.firstView).mas_offset(UIEdgeInsetsMake(5, 280, 5, 54));
+        make.top.equalTo(firstView).offset(5);
+        make.bottom.equalTo(firstView).offset(-5);
+        make.width.equalTo(@1);
+        
+        make.right.equalTo(self.view.mas_right).offset(-50 );
+        
     }];
     UIImageView *fistImageView = [[UIImageView alloc]init];
     fistImageView.image = [UIImage imageNamed:@"illness_button_input_blue.png"];
     [self.firstView addSubview:fistImageView];
     [fistImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.firstView).mas_offset(UIEdgeInsetsMake(17, 305, 17, 20));
+//        make.edges.equalTo(self.firstView).mas_offset(UIEdgeInsetsMake(17, 305, 17, 20));
+        make.top.equalTo(firstView).offset(5);
+        make.bottom.equalTo(firstView).offset(-5);
+        make.width.equalTo(@15);
         
+        make.right.equalTo(self.view.mas_right).offset(-20 );
+        
+
     }];
     /**
      UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(event:)];
@@ -142,7 +154,7 @@
         //            make.edges.equalTo(self.view).mas_offset(UIEdgeInsetsMake(210, 20, 415, 20));
         make.top.equalTo(firstView.mas_bottom).offset(10);
         make.left.equalTo(self.view.mas_left).offset(10);
-        make.right.equalTo(self.view.mas_right).offset(-69 );
+        make.right.equalTo(self.view.mas_right).offset(-10 );
         make.height.equalTo(@(screemH/16));
         //            mak
         
@@ -160,13 +172,24 @@
     secondImage.image = [UIImage imageNamed:@"illness_img_line.png"];
     [self.secondView addSubview:secondImage];
     [secondImage mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.secondView).mas_offset(UIEdgeInsetsMake(5, 280, 5, 54));
+//        make.edges.equalTo(self.secondView).mas_offset(UIEdgeInsetsMake(5, 280, 5, 54));
+        make.top.equalTo(secondView).offset(5);
+        make.bottom.equalTo(secondView).offset(-5);
+        make.width.equalTo(@1);
+        
+        make.right.equalTo(self.view.mas_right).offset(-50 );
+
     }];
     UIImageView *secondIMageVIew = [[UIImageView alloc]init];
     secondIMageVIew.image = [UIImage imageNamed:@"illness_button_input_blue.png"];
     [self.secondView addSubview:secondIMageVIew];
     [secondIMageVIew mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.secondView).mas_offset(UIEdgeInsetsMake(17, 305, 17, 20));
+//        make.edges.equalTo(self.secondView).mas_offset(UIEdgeInsetsMake(17, 305, 17, 20));
+        make.top.equalTo(secondView).offset(5);
+        make.bottom.equalTo(secondView).offset(-5);
+        make.width.equalTo(@15);
+        
+        make.right.equalTo(self.view.mas_right).offset(-20 );
         
     }];
     
@@ -183,6 +206,28 @@
         make.height.equalTo(@(screemH/16));
         
     }];
+    //点击but
+    UIButton *threeButton = [[UIButton alloc]init];
+    //    threeButton.backgroundColor = [UIColor redColor];
+    [threeButton setBackgroundImage:[UIImage imageNamed:@"illness_rb_img_nor.png"] forState:UIControlStateNormal];
+    [threeButton setBackgroundImage:[UIImage imageNamed:@"illness_rb_img_sel.png"] forState:UIControlStateSelected];
+    threeButton.tag = 1;
+    [self.threeView addSubview:threeButton];
+    [threeButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        //        make.edges.equalTo(self.threeView).mas_offset(UIEdgeInsetsMake(15, 140, 15, 180));
+        
+                make.top.equalTo(threeView).offset(threeView.height/2+15);
+//                make.bottom.equalTo(threeView).offset(-5);
+        make.width.equalTo(@15);
+        make.height.equalTo(@15);
+        make.left.equalTo(threeView.mas_left).offset(screemW/2 -50);
+        
+    }];
+    
+    //    self.threeLabel = tureLabel;
+    //diagnose确诊
+    [threeButton addTarget:self action:@selector(diagnose:) forControlEvents:UIControlEventTouchDown];
+    //是否确证Lable
     UILabel *threeLabel = [[UILabel alloc]init];
     threeLabel.text = @"是否确诊";
     self.threeLabel = threeLabel;
@@ -191,26 +236,21 @@
     [threeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.threeView).mas_offset(UIEdgeInsetsMake(5, 5, 5, 0));
     }];
-    UIButton *threeButton = [[UIButton alloc]init];
-    //    threeButton.backgroundColor = [UIColor redColor];
-    [threeButton setBackgroundImage:[UIImage imageNamed:@"illness_rb_img_nor.png"] forState:UIControlStateNormal];
-    [threeButton setBackgroundImage:[UIImage imageNamed:@"illness_rb_img_sel.png"] forState:UIControlStateSelected];
-    threeButton.tag = 1;
-    [self.threeView addSubview:threeButton];
-    [threeButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.threeView).mas_offset(UIEdgeInsetsMake(15, 140, 15, 180));
-        
-    }];
-    UILabel *tureLabel = [[UILabel alloc]init];
+       UILabel *tureLabel = [[UILabel alloc]init];
     tureLabel.text = @"已确诊";
     [self.threeView addSubview:tureLabel];
     [tureLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.threeView).mas_offset(UIEdgeInsetsMake(5, 160, 5, 0));
+//        make.edges.equalTo(self.threeView).mas_offset(UIEdgeInsetsMake(5, 160, 5, 0));
+        
+        make.top.equalTo(threeView).offset(5);
+        make.bottom.equalTo(threeView).offset(-5);
+
+          make.left.equalTo(threeButton.mas_right).offset(10 );
+//
         
     }];
-    //    self.threeLabel = tureLabel;
-    //diagnose确诊
-    [threeButton addTarget:self action:@selector(diagnose:) forControlEvents:UIControlEventTouchDown];
+    
+   
     
     //症状疑似
     UIButton *symptomButoon = [[UIButton alloc]init];
@@ -220,13 +260,30 @@
     symptomButoon.tag = 2;
     [self.threeView addSubview:symptomButoon];
     [symptomButoon mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.threeView).mas_offset(UIEdgeInsetsMake(15, 240, 15, 80));
+//        make.edges.equalTo(self.threeView).mas_offset(UIEdgeInsetsMake(15, 240, 15, 80));
+   
+        make.top.equalTo(threeView).offset(threeView.height/2+15);
+        //                make.bottom.equalTo(threeView).offset(-5);
+        make.width.equalTo(@15);
+        make.height.equalTo(@15);
+        
+        make.left.equalTo(tureLabel.mas_right).offset(20 );
+
+        
+
     }];
     UILabel *symptomLabel = [[UILabel alloc]init];
     symptomLabel.text = @"疑似症状";
     [self.threeView addSubview:symptomLabel];
     [symptomLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.threeView).mas_offset(UIEdgeInsetsMake(5, 260, 5, 0));
+//        make.edges.equalTo(self.threeView).mas_offset(UIEdgeInsetsMake(5, 260, 5, 0));
+        
+        make.top.equalTo(threeView).offset(5);
+        make.bottom.equalTo(threeView).offset(-5);
+        
+        make.left.equalTo(symptomButoon.mas_right).offset(10 );
+
+        
     }];
     //疑似症状
     [symptomButoon addTarget:self action:@selector(symptomButton:) forControlEvents:UIControlEventTouchDown];
@@ -241,6 +298,9 @@
         //            make.edges.equalTo(self.view).mas_offset(UIEdgeInsetsMake(330, 20, 290, 20));
         make.top.equalTo(threeView.mas_bottom).offset(10);
         make.left.equalTo(self.view.mas_left).offset(10);
+        make.right.equalTo(self.view.mas_right).offset(-10 );
+        make.height.equalTo(@(screemH/16));
+
     }];
     UILabel *fourLabel = [[UILabel alloc]init];
     fourLabel.text = @"是否接受过治疗";
@@ -249,8 +309,8 @@
     [self.fourView addSubview:fourLabel];
     [fourLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.fourView).mas_offset(UIEdgeInsetsMake(5, 5, 5, 0));
-        make.right.equalTo(self.view.mas_right).offset(-10 );
-        make.height.equalTo(@(screemH/16));
+       
+
     }];
     //receive 接受  unsolved未接受
     UIButton *receiveButton = [[UIButton alloc]init];
@@ -259,13 +319,27 @@
     [receiveButton setBackgroundImage:[UIImage imageNamed:@"illness_rb_img_sel.png"] forState:UIControlStateSelected];
     [self.fourView addSubview:receiveButton];
     [receiveButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.fourView).mas_offset(UIEdgeInsetsMake(15, 140, 15, 180));
+        make.top.equalTo(fourView).offset(fourView.height/2+15);
+        //                make.bottom.equalTo(threeView).offset(-5);
+        make.width.equalTo(@15);
+        make.height.equalTo(@15);
+        make.left.equalTo(fourView.mas_left).offset(screemW/2 -50);
+        
+
+//        make.edges.equalTo(self.fourView).mas_offset(UIEdgeInsetsMake(15, 140, 15, 180));
     }];
     UILabel *receiveLabel = [[UILabel alloc]init];
     receiveLabel.text = @"接受过";
     [self.fourView addSubview:receiveLabel];
     [receiveLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.fourView).mas_offset(UIEdgeInsetsMake(5, 160, 5, 0));
+//        make.edges.equalTo(self.fourView).mas_offset(UIEdgeInsetsMake(5, 160, 5, 0));
+        make.top.equalTo(fourView).offset(5);
+        make.bottom.equalTo(fourView).offset(-5);
+        
+        make.left.equalTo(receiveButton.mas_right).offset(10 );
+        //
+
+        
     }];
     [receiveButton addTarget:self action:@selector(receive:) forControlEvents:UIControlEventTouchDown];
     
@@ -276,7 +350,14 @@
     [unsolvedButton setBackgroundImage:[UIImage imageNamed:@"illness_rb_img_sel.png"] forState:UIControlStateSelected];
     [self.fourView addSubview:unsolvedButton];
     [unsolvedButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.fourView).mas_offset(UIEdgeInsetsMake(15, 240, 15, 80));
+//        make.edges.equalTo(self.fourView).mas_offset(UIEdgeInsetsMake(15, 240, 15, 80));
+        make.top.equalTo(fourView).offset(fourView.height/2+15);
+        //                make.bottom.equalTo(threeView).offset(-5);
+        make.width.equalTo(@15);
+        make.height.equalTo(@15);
+        
+        make.left.equalTo(receiveLabel.mas_right).offset(20 );
+    
     }];
     
     [unsolvedButton addTarget:self action:@selector(unsolveButton:) forControlEvents:UIControlEventTouchDown];
@@ -284,7 +365,12 @@
     unsolvedLabel.text = @"未接受过";
     [self.fourView addSubview:unsolvedLabel];
     [unsolvedLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.fourView).mas_offset(UIEdgeInsetsMake(5, 260, 5, 0));
+//        make.edges.equalTo(self.fourView).mas_offset(UIEdgeInsetsMake(5, 260, 5, 0));
+        
+        make.top.equalTo(fourView).offset(5);
+        make.bottom.equalTo(fourView).offset(-5);
+        
+        make.left.equalTo(unsolvedButton.mas_right).offset(10 );
     }];
     
     
@@ -301,11 +387,16 @@
     //    ZXView *blew1View = [[ZXView alloc]init];
     //    [self.view addSubview:blewView1];
     [blewView mas_makeConstraints:^(MASConstraintMaker *make) {
-        //            make.edges.equalTo(self.view).mas_equalTo(UIEdgeInsetsMake(390, 20, 240, 20));
+//                    make.edges.equalTo(self.view).mas_equalTo(UIEdgeInsetsMake(390, 20, 240, 20));
+//        make.top.equalTo(fourView.mas_bottom).offset(10);
+//        make.left.equalTo(self.view.mas_left).offset(10);
+////        make.right.equalTo(self.view.mas_right).offset(-69 );
+////        make.height.equalTo(@(screemH/16));
         make.top.equalTo(fourView.mas_bottom).offset(10);
         make.left.equalTo(self.view.mas_left).offset(10);
-//        make.right.equalTo(self.view.mas_right).offset(-69 );
-//        make.height.equalTo(@(screemH/16));
+        make.right.equalTo(self.view.mas_right).offset(-10 );
+        make.height.equalTo(@(screemH/16));
+
         
     }];
     //添加文字
@@ -328,13 +419,24 @@
     blewImage.image = [UIImage imageNamed:@"illness_img_line.png"];
     [self.blewView addSubview:blewImage];
     [blewImage mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.blewView).mas_offset(UIEdgeInsetsMake(5, 280, 5, 54));
+//        make.edges.equalTo(self.blewView).mas_offset(UIEdgeInsetsMake(5, 280, 5, 54));
+        
+        make.top.equalTo(blewView).offset(5);
+        make.bottom.equalTo(blewView).offset(-5);
+        make.width.equalTo(@1);
+        
+        make.right.equalTo(self.view.mas_right).offset(-50 );
     }];
     UIImageView *blewimage = [[UIImageView alloc]init];
     blewimage.image = [UIImage imageNamed:@"illness_button_input_blue.png"];
     [self.blewView addSubview:blewimage];
     [blewimage mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.blewView).mas_equalTo(UIEdgeInsetsMake(14, 305, 14, 20));
+//        make.edges.equalTo(self.blewView).mas_equalTo(UIEdgeInsetsMake(14, 305, 14, 20));
+        make.top.equalTo(blewView).offset(5);
+        make.bottom.equalTo(blewView).offset(-5);
+        make.width.equalTo(@15);
+        
+        make.right.equalTo(self.view.mas_right).offset(-20 );
     }];
     //文字
     UILabel *textLabel = [[UILabel alloc]init];
@@ -343,10 +445,10 @@
     [self.view addSubview:textLabel];
     [textLabel mas_makeConstraints:^(MASConstraintMaker *make) {
 //        make.edges.equalTo(self.view).mas_equalTo(UIEdgeInsetsMake(300, 0, 20, 0));
-        make.top.equalTo(fourView.mas_bottom).offset(70);
+        make.top.equalTo(blewView.mas_bottom).offset(10);
         make.left.equalTo(self.view.mas_left).offset(10);
                 make.right.equalTo(self.view.mas_right).offset(-10 );
-                make.height.equalTo(@(40));
+//                make.height.equalTo(@(40));
         
     }];
     
