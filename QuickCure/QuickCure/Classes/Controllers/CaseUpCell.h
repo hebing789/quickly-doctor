@@ -11,5 +11,7 @@
 @interface CaseUpCell : UITableViewCell
 
 @property(nonatomic,strong)CaseUpModel *model;
-
+@property(nonatomic,strong)UILabel *titleLB;
+@property(nonatomic,strong)UILabel *labelLB;
+@property(nonatomic,strong)UIImageView *imgv;
 @end

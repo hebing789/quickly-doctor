@@ -10,4 +10,8 @@
 
 @interface CaseTypeController : UITableViewController
 
+@property(nonatomic,copy) void(^dadaBlock)(NSString* str);
+
+@property(nonatomic,assign) NSInteger item;
+
 @end
