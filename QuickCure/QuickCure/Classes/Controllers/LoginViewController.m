@@ -173,48 +173,111 @@
 //按钮点击事件
 -(void)clickLoginButton
 {
+    NSLog(@"begin");
+//    判断是否成功 成功显示登录成功的遮罩 跳转到home界面
+
     
-    //判断是否成功 成功显示登录成功的遮罩 跳转到home界面
-//    if ([_textstr1 isEqualToString:@"1"]&&[_textstr2 isEqualToString:@"1"]) {
-    if ([_text1.text isEqualToString:@"1"]&&[_text2.text isEqualToString:@"1"]) {
-        //登录成功 显示遮罩
+ NSString* str1=  [[NSUserDefaults standardUserDefaults]objectForKey:@"__textstr1"];
+ NSString* str2=[[NSUserDefaults standardUserDefaults]objectForKey:@"__textstr2"];
+    
+
+    if (str1.length!=0&&str2.length!=0) {
         
-        [MBProgressHUD showSuccessMessage:@"登录成功" afterDelay:2.0f];
+        if ([_text1.text isEqualToString:str1]&&[_text2.text isEqualToString:str2]) {
+            //登录成功 显示遮罩
+            
+            [MBProgressHUD showSuccessMessage:@"登录成功" afterDelay:2.0f];
+            [self.navigationController popToRootViewControllerAnimated:YES];
+            //记录密码写入到用户的偏好设置里面
+            //初始密码为1,1,//    刚开始用户为1,密码为1,后来按照注册的名称和密码登录
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setObject:@"1" forKey:@"__textstr1"];
+            [defaults setObject:@"1" forKey:@"__textstr2"];
+            //立马写入
+            [defaults synchronize];
+            //发送通知 //这个通知是加载登录界面
+            NSNotification *notice = [NSNotification notificationWithName:@"gao" object:nil];
+            [[NSNotificationCenter defaultCenter]postNotification:notice];
+            
+            
+            
+        }else {
+            //登录失败
+            [MBProgressHUD showErrorMessage:@"登录失败" afterDelay:2.0f];
+            
+            
+            
+        }
         
-        
-        [self.navigationController popToRootViewControllerAnimated:YES];
-        //记录密码写入到用户的偏好设置里面
-        //初始密码为1,1,//    刚开始用户为1,密码为1,后来按照注册的名称和密码登录
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setObject:@"1" forKey:@"__textstr1"];
-        [defaults setObject:@"1" forKey:@"__textstr2"];
-        //立马写入
-        [defaults synchronize];
-        //发送通知 //这个通知是加载登录界面
-        NSNotification *notice = [NSNotification notificationWithName:@"gao" object:nil];
-        [[NSNotificationCenter defaultCenter]postNotification:notice];
-        
-        
-        
-    }else {
-        //登录失败
-        [MBProgressHUD showErrorMessage:@"登录失败" afterDelay:2.0f];
-        
-        
-        
+
+    }else{
+  
+    
+    
+    
+    
+        if ([_text1.text isEqualToString:@"1"]&&[_text2.text isEqualToString:@"1"]) {
+            //登录成功 显示遮罩
+            
+            [MBProgressHUD showSuccessMessage:@"登录成功" afterDelay:2.0f];
+            
+            
+            [self.navigationController popToRootViewControllerAnimated:YES];
+            //记录密码写入到用户的偏好设置里面
+            //初始密码为1,1,//    刚开始用户为1,密码为1,后来按照注册的名称和密码登录
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setObject:@"1" forKey:@"__textstr1"];
+            [defaults setObject:@"1" forKey:@"__textstr2"];
+            //立马写入
+            [defaults synchronize];
+            //发送通知 //这个通知是加载登录界面
+            NSNotification *notice = [NSNotification notificationWithName:@"gao" object:nil];
+            [[NSNotificationCenter defaultCenter]postNotification:notice];
+            
+            
+            
+        }else {
+            //登录失败
+            [MBProgressHUD showErrorMessage:@"登录失败" afterDelay:2.0f];
+            
+            
+            
+        }
+    
+    
+    
+//    if ([_text1.text isEqualToString:@"1"]&&[_text2.text isEqualToString:@"1"]) {
+//                    //登录成功 显示遮罩
+//        
+//                    [MBProgressHUD showSuccessMessage:@"登录成功" afterDelay:2.0f];
+//        
+//        
+//                    [self.navigationController popToRootViewControllerAnimated:YES];
+//                    //记录密码写入到用户的偏好设置里面
+//                    //初始密码为1,1,//    刚开始用户为1,密码为1,后来按照注册的名称和密码登录
+//                    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//                    [defaults setObject:@"1" forKey:@"__textstr1"];
+//                    [defaults setObject:@"1" forKey:@"__textstr2"];
+//                    //立马写入
+//                    [defaults synchronize];
+//                    //发送通知 //这个通知是加载登录界面
+//                    NSNotification *notice = [NSNotification notificationWithName:@"gao" object:nil];
+//                    [[NSNotificationCenter defaultCenter]postNotification:notice];
+//        
+//        
+//        
+//                }else {
+//                    //登录失败
+//                    [MBProgressHUD showErrorMessage:@"登录失败" afterDelay:2.0f];
+//                    
+//                    
+//                    
+//                }
+//                
+//    
+    
+    
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }
 
 

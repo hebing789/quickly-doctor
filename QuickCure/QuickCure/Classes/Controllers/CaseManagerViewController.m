@@ -31,11 +31,12 @@
 
 -(void)setDataAry:(NSMutableArray *)dataAry{
     
-    [dataAry enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-       
-        [_dataAry addObject:obj];
-    }];
+//    [dataAry enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//       
+//        [_dataAry addObject:obj];
+//    }];
     
+    [_dataAry addObject:dataAry];
     
     [self.blView reloadData];
     
@@ -259,16 +260,43 @@
 //    UITableViewCell *cell = [[UITableViewCell alloc] init];
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"bl" forIndexPath:indexPath];
-    if ([self.dataAry[indexPath.item] isKindOfClass:[UIImage class]]) {
-        UIImageView* temImgView=[[UIImageView alloc]initWithFrame:CGRectMake(5, 5, 100, 100)];
-        temImgView.image=self.dataAry[indexPath.item];
-        [cell.contentView addSubview:temImgView];
-//        cell.imageView.image=self.dataAry[indexPath.item];
-//        cell.imageView.bounds=CGRectMake(0, 0, 100, 100);
+//    if ([self.dataAry[indexPath.item] isKindOfClass:[UIImage class]]) {
+//        UIImageView* temImgView=[[UIImageView alloc]initWithFrame:CGRectMake(5, 5, 100, 100)];
+//        temImgView.image=self.dataAry[indexPath.item];
+//        [cell.contentView addSubview:temImgView];
+////        cell.imageView.image=self.dataAry[indexPath.item];
+////        cell.imageView.bounds=CGRectMake(0, 0, 100, 100);
+//    }
+//    else{
+//        cell.textLabel.text=self.dataAry[indexPath.item];
+//    }
+    UIView* marginView=[[UIView alloc]initWithFrame:CGRectMake(10, 10, 2, 110)];
+    marginView.backgroundColor=[UIColor colorWithRed:1.0 green:0.5058 blue:0.1963 alpha:1.0];
+    
+    [cell.contentView addSubview:marginView];
+    int i=0;
+    NSArray* ary= self.dataAry[indexPath.item];
+    for (id obj in ary) {
+        
+        if ([obj isKindOfClass:[UIImage class]]){
+            UIImageView* temImgView=[[UIImageView alloc]initWithFrame:CGRectMake(20, 10, 100, 100)];
+            temImgView.image=obj;
+            [cell.contentView addSubview:temImgView];
+        }else{
+            
+            if ([obj isKindOfClass:[NSString class]]){
+                
+                UILabel* temLab=[[UILabel alloc]initWithFrame:CGRectMake(130, 10+i*30, screemW-200, 50)];
+                temLab.text=obj;
+                i++;
+                [cell.contentView addSubview:temLab];
+            }
+            
+        }
+       
+        
     }
-    else{
-        cell.textLabel.text=self.dataAry[indexPath.item];
-    }
+    
     
     return cell;
 }
@@ -281,10 +309,12 @@
 //    if ([cell.contentView.subviews containsObject:temImgView]) {
 //        return 100;
 //    }
-    //没法判读有图片不
-    if (indexPath.item==2) {
-        return 110;
-    }
-    return 40;
+//    //没法判读有图片不
+//    if (indexPath.item==2) {
+//        return 110;
+//    }
+//    return 40;
+    
+    return 130;
 }
 @end

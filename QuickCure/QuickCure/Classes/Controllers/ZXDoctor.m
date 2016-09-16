@@ -70,8 +70,8 @@
         //        make.edges.equalTo(self.view).mas_offset(UIEdgeInsetsMake(70, 10, 570, 100));
         make.top.equalTo(self.mas_topLayoutGuide).offset(20);
         make.left.equalTo(self.view.mas_left).offset(10);
-        //            make.bottom.equalTo(@-540);
-        //            make.right.equalTo(@100);
+       
+
         
     }];
     UILabel *xlabel = [[UILabel alloc]init];
@@ -83,6 +83,7 @@
         //            make.edges.equalTo(self.view).mas_offset(UIEdgeInsetsMake(120, 10, 530, 100));
         make.top.equalTo(zlabel.mas_bottom).offset(20);
         make.left.equalTo(self.view.mas_left).offset(10);
+        
     }];
     
 #warning 开始栏 入口

@@ -9,5 +9,10 @@
 #import "BaseViewController.h"
 
 @interface RegisterViewController : BaseViewController
+@property(nonatomic,copy) NSString* str1;
+
+@property(nonatomic,copy) NSString*str2;
+
+
 
 @end
