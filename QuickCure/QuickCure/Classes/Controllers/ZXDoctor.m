@@ -8,7 +8,9 @@
 
 #import "ZXDoctor.h"
 #import "SyndromeViewController.h"
-#import "DoctorViewController.h"
+
+#import "FocusDoctorViewController.h"
+#import "xinXueTableViewController.h"
 @interface ZXDoctor ()
 
 
@@ -440,8 +442,10 @@
 
 -(void)mohuSearch:(UITapGestureRecognizer *)tap
 {
+    xinXueTableViewController* searchController=[[xinXueTableViewController alloc]init];
     
     
+     [self.navigationController pushViewController:searchController animated:YES];
     
     //        self.navigationController.navigationItem
 }
@@ -465,14 +469,18 @@
 }
 -(void)cureWay:(UITapGestureRecognizer *)tap
 {
+    xinXueTableViewController* searchController=[[xinXueTableViewController alloc]init];
     
+    
+    [self.navigationController pushViewController:searchController animated:YES];
+
     
 }
 
 
 -(void)toConcernDoctor{
-    DoctorViewController* dv=[[DoctorViewController alloc]init];
-     [self.navigationController pushViewController:dv animated:YES];
+    FocusDoctorViewController* focusDoctor=[[FocusDoctorViewController alloc]init];
+     [self.navigationController pushViewController:focusDoctor animated:YES];
     
     
     
