@@ -8,6 +8,6 @@
 
 #import "BaseNaviController.h"
 
-@interface ZXDoctor : BaseNaviController
+@interface ZXDoctor : UIViewController
 
 @end

@@ -12,6 +12,7 @@
 #import <UIImageView+WebCache.h>
 #import "VideoCollectionView.h"
 #import "SyndromeViewController.h"
+#import "ZXDoctor.h"
 #define screemW    [UIScreen mainScreen].bounds.size.width
 #define screemH    [UIScreen mainScreen].bounds.size.height
 
@@ -258,7 +259,8 @@
 - (void)pushController:(UIButton *)button
 {
     NSLog(@"----------------------%@",button.titleLabel.text);
-    [self.navigationController pushViewController:[[SyndromeViewController alloc] init] animated:YES];
+    ZXDoctor* aboutDoctor=[[ZXDoctor alloc]init];
+    [self.navigationController pushViewController:aboutDoctor animated:YES];
     
 }
 
