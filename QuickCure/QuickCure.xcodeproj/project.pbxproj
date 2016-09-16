@@ -41,6 +41,7 @@
 		3DBDAB2F1D854BBF0027493E /* province.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3DBDAB2E1D854BBF0027493E /* province.plist */; };
 		5B9E1D321D89C04C00154EE6 /* VideoCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9E1D311D89C04C00154EE6 /* VideoCollectionView.m */; };
 		5B9E1D351D89C09B00154EE6 /* VideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9E1D341D89C09B00154EE6 /* VideoCell.m */; };
+		5B9E1D3B1D8BDDEE00154EE6 /* commonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9E1D3A1D8BDDEE00154EE6 /* commonViewController.m */; };
 		5BF4B3D01D86D17F0054AA86 /* WeatherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF4B3CF1D86D17F0054AA86 /* WeatherModel.m */; };
 		5BF4B3D31D86D2060054AA86 /* WeatherView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF4B3D21D86D2060054AA86 /* WeatherView.m */; };
 		5BF4B3D61D86D3D60054AA86 /* UIView+UIframe.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF4B3D51D86D3D60054AA86 /* UIView+UIframe.m */; };
@@ -131,6 +132,8 @@
 		5B9E1D311D89C04C00154EE6 /* VideoCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoCollectionView.m; sourceTree = "<group>"; };
 		5B9E1D331D89C09B00154EE6 /* VideoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoCell.h; sourceTree = "<group>"; };
 		5B9E1D341D89C09B00154EE6 /* VideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoCell.m; sourceTree = "<group>"; };
+		5B9E1D391D8BDDEE00154EE6 /* commonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commonViewController.h; sourceTree = "<group>"; };
+		5B9E1D3A1D8BDDEE00154EE6 /* commonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = commonViewController.m; sourceTree = "<group>"; };
 		5BF4B3CE1D86D17F0054AA86 /* WeatherModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherModel.h; sourceTree = "<group>"; };
 		5BF4B3CF1D86D17F0054AA86 /* WeatherModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherModel.m; sourceTree = "<group>"; };
 		5BF4B3D11D86D2060054AA86 /* WeatherView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherView.h; sourceTree = "<group>"; };
@@ -530,6 +533,24 @@
 			name = "模糊搜索table";
 			sourceTree = "<group>";
 		};
+		5B9E1D371D8BDD5E00154EE6 /* 病例分类 */ = {
+			isa = PBXGroup;
+			children = (
+				98213D4D1D8BCC8200569F10 /* ZXDoctor.h */,
+				98213D4E1D8BCC8200569F10 /* ZXDoctor.m */,
+			);
+			name = "病例分类";
+			sourceTree = "<group>";
+		};
+		5B9E1D381D8BDD8300154EE6 /* 公益 */ = {
+			isa = PBXGroup;
+			children = (
+				5B9E1D391D8BDDEE00154EE6 /* commonViewController.h */,
+				5B9E1D3A1D8BDDEE00154EE6 /* commonViewController.m */,
+			);
+			name = "公益";
+			sourceTree = "<group>";
+		};
 		5BF4B3CB1D86D0EA0054AA86 /* 天气 */ = {
 			isa = PBXGroup;
 			children = (
@@ -641,9 +662,9 @@
 		98213D4C1D8BCC4F00569F10 /* 医药转 */ = {
 			isa = PBXGroup;
 			children = (
+				5B9E1D381D8BDD8300154EE6 /* 公益 */,
 				5B9E1D361D8BD74900154EE6 /* 模糊搜索table */,
-				98213D4D1D8BCC8200569F10 /* ZXDoctor.h */,
-				98213D4E1D8BCC8200569F10 /* ZXDoctor.m */,
+				5B9E1D371D8BDD5E00154EE6 /* 病例分类 */,
 			);
 			name = "医药转";
 			sourceTree = "<group>";
@@ -862,6 +883,7 @@
 				3D3C69521D83E75100980F63 /* LoginViewController.m in Sources */,
 				98E3DAA81D86BF2C00CB957D /* feedbackViewController.m in Sources */,
 				5BF4B3D31D86D2060054AA86 /* WeatherView.m in Sources */,
+				5B9E1D3B1D8BDDEE00154EE6 /* commonViewController.m in Sources */,
 				3D3C696D1D83EA5A00980F63 /* NotificationDefine.m in Sources */,
 				37E8773C1D8800CD00F92637 /* CaseTypeController.m in Sources */,
 				3D3C69341D83E36C00980F63 /* NetWorkManager.m in Sources */,

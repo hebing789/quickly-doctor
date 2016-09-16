@@ -13,6 +13,7 @@
 #import "VideoCollectionView.h"
 #import "SyndromeViewController.h"
 #import "ZXDoctor.h"
+#import "commonViewController.h"
 #define screemW    [UIScreen mainScreen].bounds.size.width
 #define screemH    [UIScreen mainScreen].bounds.size.height
 
@@ -258,7 +259,7 @@
 
 - (void)pushController:(UIButton *)button
 {
-    NSLog(@"----------------------%@",button.titleLabel.text);
+//    NSLog(@"----------------------%@",button.titleLabel.text);
     ZXDoctor* aboutDoctor=[[ZXDoctor alloc]init];
     //这个控制器不是我们需要的导航,无效
 //    aboutDoctor.navigationController.navigationItem.title=button.titleLabel.text;
@@ -272,7 +273,9 @@
 
 - (void)pushWebController:(UIButton *)button
 {
-    NSLog(@"----------------------%@",button.titleLabel.text);
+    commonViewController* common=[[commonViewController alloc]init];
+    [self.navigationController pushViewController:common animated:YES];
+//    NSLog(@"----------------------%@",button.titleLabel.text);
 }
 
 
