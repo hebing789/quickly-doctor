@@ -260,8 +260,11 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"bl" forIndexPath:indexPath];
     if ([self.dataAry[indexPath.item] isKindOfClass:[UIImage class]]) {
-        cell.imageView.image=self.dataAry[indexPath.item];
-        cell.imageView.bounds=CGRectMake(0, 0, 100, 100);
+        UIImageView* temImgView=[[UIImageView alloc]initWithFrame:CGRectMake(5, 5, 100, 100)];
+        temImgView.image=self.dataAry[indexPath.item];
+        [cell.contentView addSubview:temImgView];
+//        cell.imageView.image=self.dataAry[indexPath.item];
+//        cell.imageView.bounds=CGRectMake(0, 0, 100, 100);
     }
     else{
         cell.textLabel.text=self.dataAry[indexPath.item];
@@ -271,11 +274,17 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    有图片返回40
-//    UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"bl" forIndexPath:indexPath]
-//    if (cell.imageView.imag) {
-//        
+////    有图片返回40
+//    UITableViewCell *cell=[self.blView dequeueReusableCellWithIdentifier:@"bl" forIndexPath:indexPath];
+//    UIImageView* temImgView=[[UIImageView alloc]initWithFrame:CGRectMake(5, 5, 100, 100)];
+//    temImgView.image=self.dataAry[indexPath.item];
+//    if ([cell.contentView.subviews containsObject:temImgView]) {
+//        return 100;
 //    }
+    //没法判读有图片不
+    if (indexPath.item==2) {
+        return 110;
+    }
     return 40;
 }
 @end

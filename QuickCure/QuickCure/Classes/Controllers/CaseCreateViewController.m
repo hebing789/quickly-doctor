@@ -14,7 +14,7 @@
 #import "CaseTypeController.h"
 #import "CaseDitailController.h"
 @interface CaseCreateViewController ()<UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
-@property(nonatomic,weak)UIButton *btn;
+@property(nonatomic,weak)UIImageView *btn;
 @property(nonatomic,strong)NSMutableArray* dataAry;
 @property(nonatomic,strong)NSArray *upList;
 @property(nonatomic,weak)UITableView *tbView ;
@@ -161,23 +161,23 @@
         //这个方法,取出来的cell内容会清空
         CaseThrCell *cell = [self.tbView dequeueReusableCellWithIdentifier:@"cellUp" forIndexPath:indexPath];
         
-        
-        UIButton *btn = [[UIButton alloc] init];
-        [btn setBackgroundImage:[UIImage imageNamed:@"compose_pic_add_highlighted"] forState:UIControlStateNormal];
-        [btn addTarget:self action:@selector(clickImg:) forControlEvents:UIControlEventTouchUpInside];
+        UIImageView *btn = [[UIImageView alloc] init];
+//        [btn setBackgroundImage:[UIImage imageNamed:@"compose_pic_add_highlighted"] forState:UIControlStateNormal];
+        btn.image=[UIImage imageNamed:@"compose_pic_add_highlighted"] ;
+//        [btn addTarget:self action:@selector(clickImg:) forControlEvents:UIControlEventTouchUpInside];
         [cell.contentView addSubview:btn];
         self.btn=btn;
         UILabel *label = [[UILabel alloc] init];
         label.text = @"病例照片:";
         [cell.contentView addSubview:label];
         
-       
+        
         [label mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.top.equalTo(cell.contentView).offset(10);
             make.width.offset(80);
             make.height.offset(20);
         }];
-
+        
         
         [btn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.width.height.offset(80);
@@ -189,6 +189,36 @@
         [self clickImg:btn];
         
         
+
+        
+//        
+//        UIButton *btn = [[UIButton alloc] init];
+//        [btn setBackgroundImage:[UIImage imageNamed:@"compose_pic_add_highlighted"] forState:UIControlStateNormal];
+//        [btn addTarget:self action:@selector(clickImg:) forControlEvents:UIControlEventTouchUpInside];
+//        [cell.contentView addSubview:btn];
+//        self.btn=btn;
+//        UILabel *label = [[UILabel alloc] init];
+//        label.text = @"病例照片:";
+//        [cell.contentView addSubview:label];
+//        
+//       
+//        [label mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.left.top.equalTo(cell.contentView).offset(10);
+//            make.width.offset(80);
+//            make.height.offset(20);
+//        }];
+//
+//        
+//        [btn mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.width.height.offset(80);
+//            make.left.equalTo(cell.contentView).offset(30);
+//            make.bottom.equalTo(cell.contentView).offset(-30);
+//            make.top.equalTo(label.mas_bottom).offset(20);
+//        }];
+//        
+//        [self clickImg:btn];
+//        
+//        
     }
 
 }
@@ -197,7 +227,7 @@
 
 
 
-- (void)clickImg:(UIButton *)btn
+- (void)clickImg:(UIImageView *)btn
 {
     UIImagePickerController* imgPicker=[[UIImagePickerController alloc]init];
     imgPicker.sourceType= UIImagePickerControllerSourceTypeSavedPhotosAlbum;
@@ -217,9 +247,11 @@
     
     UIImage* imag=info[@"UIImagePickerControllerOriginalImage"];
     //图片有个模糊效果
-    [self.btn setImage:imag forState:UIControlStateNormal];
+//    [self.btn setImage:imag forState:UIControlStateNormal];
+//    [self.btn setBackgroundImage:imag forState:UIControlStateNormal];
+    self.btn.image=imag;
     [self.dataAry addObject:imag];
-    _btn.enabled=NO;
+//    _btn.enabled=NO;
     
     [self  dismissViewControllerAnimated:YES completion:nil];
     

@@ -34,6 +34,7 @@
     [btn setBackgroundImage:[UIImage imageNamed:@"compose_pic_add_highlighted"] forState:UIControlStateNormal];
 //    [btn addTarget:self action:@selector(clickImg:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:btn];
+    btn.userInteractionEnabled=NO;
     _btn.enabled=NO;
     self.btn=btn;
     [label mas_makeConstraints:^(MASConstraintMaker *make) {
