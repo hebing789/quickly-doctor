@@ -39,6 +39,9 @@
 
 @property(nonatomic,weak) UILabel *secondLabel;
 
+@property(nonatomic,weak)UILabel *firstLable;
+
+@property(nonatomic,weak)UILabel *lastLable;
 @end
 
 @implementation ZXDoctor
@@ -101,6 +104,7 @@
     UILabel *firstLabel = [[UILabel alloc]init];
     firstLabel.textColor = [UIColor colorWithRed:0.7333 green:0.7294 blue:0.7608 alpha:1.0];
     firstLabel.text = @"请选择疾病细分";
+    self.firstLable=firstLabel;
     [self.firstView addSubview:firstLabel];
     [firstLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.firstView).mas_offset(UIEdgeInsetsMake(5, 5, 5, 0));
@@ -308,6 +312,8 @@
     UILabel *blewLabel = [[UILabel alloc]init];
     //        blewLabel.textColor = [UIColor colorWithRed:0.7333 green:0.7294 blue:0.7608 alpha:1.0];
     blewLabel.text = @"请选择治疗方式";
+    self.lastLable=blewLabel;
+    self.fourLabel=firstLabel;
     self.blewLabel = blewLabel;
     [self.blewView addSubview:blewLabel];
     [blewLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -443,8 +449,11 @@
 -(void)mohuSearch:(UITapGestureRecognizer *)tap
 {
     xinXueTableViewController* searchController=[[xinXueTableViewController alloc]init];
-    
-    
+    [searchController setDataBlock:^(NSString * str) {
+        self.firstLable.text=str;
+         self.firstLable.textColor=[UIColor blackColor];
+    }];
+    searchController.title=self.title;
      [self.navigationController pushViewController:searchController animated:YES];
     
     //        self.navigationController.navigationItem
@@ -469,10 +478,14 @@
 }
 -(void)cureWay:(UITapGestureRecognizer *)tap
 {
-    xinXueTableViewController* searchController=[[xinXueTableViewController alloc]init];
+    xinXueTableViewController* cureController=[[xinXueTableViewController alloc]init];
     
-    
-    [self.navigationController pushViewController:searchController animated:YES];
+    [cureController setDataBlock:^(NSString * str) {
+        self.lastLable.text=str;
+        self.lastLable.textColor=[UIColor blackColor];
+    }];
+    cureController.title=@"cure";
+    [self.navigationController pushViewController:cureController animated:YES];
 
     
 }

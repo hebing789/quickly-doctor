@@ -29,13 +29,22 @@
     
 //    [self.tableView registerClass:[xinXue class] forCellReuseIdentifier:@"xinXuecell"];
     
-    [xinXue modelWithSuccess:^(NSArray<xinXue *> *model) {
-        self.modelArray = model;
-    } error:^{
+    if ([self.title isEqualToString:@"cure"]) {
         
-    }];
-}
+        self.modelArray=@[@"手术治疗",@"药物治疗",@"保守治疗" ];
+        [self.tableView reloadData];
+    }
+    else{
+        [xinXue modelWithSuccess:^(NSArray<xinXue *> *model) {
+            self.modelArray = model;
+        } error:^{
+            
+        }];
+    }
 
+        
+    }
+    
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -58,17 +67,56 @@
     
     static NSString *reuseId = @"xinXuecell";
     
-    UITableViewCell *cell = [[UITableViewCell alloc]init];
+    UITableViewCell *cell =[tableView dequeueReusableCellWithIdentifier:reuseId];
+    
     
     if (!cell) {
-        cell = [tableView dequeueReusableCellWithIdentifier:reuseId forIndexPath:indexPath];
+        cell =[[UITableViewCell alloc]init];
     }
+    if ([self.title isEqualToString:@"cure"]) {
+        
+        cell.textLabel.text =self.modelArray[indexPath.row];
+        
+    }else{
+        xinXue *model = self.modelArray[indexPath.row];
+        
+        cell.textLabel.text = model.ci3_name;
+        
+    }
+
     
-    xinXue *model = self.modelArray[indexPath.row];
-    
-    cell.textLabel.text = model.ci3_name;
     
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if ([self.title isEqualToString:@"cure"]) {
+        
+        
+        if (_dataBlock) {
+            
+            
+            
+            _dataBlock(self.modelArray[indexPath.row]);
+            
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+        
+    }else{
+        
+        if (_dataBlock) {
+            xinXue *model = self.modelArray[indexPath.row];
+            
+            
+            _dataBlock(model.ci3_name);
+            
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    }
+    
+
+    
 }
 
 
