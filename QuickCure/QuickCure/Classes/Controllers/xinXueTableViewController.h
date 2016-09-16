@@ -10,4 +10,9 @@
 
 @interface xinXueTableViewController : UITableViewController
 
+@property(nonatomic,copy) void(^dataBlock)(NSString* str);
+
+//判读应该加载什么数据
+@property(nonatomic,copy) NSString* title;
+
 @end
