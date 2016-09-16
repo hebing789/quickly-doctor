@@ -56,12 +56,21 @@
     [super viewDidLoad];
     [self layoutSubviews];
     
-    self.title = @"并发症";
+    [self setNavigationBar];
 }
 
 - (void) layoutSubviews{
     
     [self.view addSubview:self.syndromeTableView];
+}
+
+- (void)setNavigationBar
+{
+    self.title = @"并发症";
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"jiantou"] style:UIBarButtonItemStylePlain target:self action:@selector(clickLeftBarBtn)];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"确定" style:UIBarButtonItemStylePlain target:self action:@selector(clickRightBarBtn)];
 }
 
 - (void)clickBtn:(UIButton *)button
@@ -75,6 +84,16 @@
     {
         [button setTitle:@"订阅" forState:UIControlStateNormal];
         [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];    }
+}
+
+- (void)clickLeftBarBtn
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)clickRightBarBtn
+{
+    NSLog(@"ssss");
 }
 
 #pragma mark - dataSource
