@@ -252,7 +252,7 @@
 {
     
     //判断加上输入的字符，是否超过界限
-    NSLog(@"%zd",textView.text.length);
+//    NSLog(@"%zd",textView.text.length);
     NSString *str = [NSString stringWithFormat:@"%@%@", textView.text, text];
     //字数显示
 //    [self.zxlaebl setText:[NSString stringWithFormat:@"%zd",self.zxlaebl.text.intValue - 1]];
@@ -269,17 +269,17 @@
 }
 #warning mark-----要判断的~
 - (void)textViewDidChange:(UITextView *)textView{
-    NSLog(@"1--%zd---%@",textView.text.length,textView.text);
+//    NSLog(@"1--%zd---%@",textView.text.length,textView.text);
     
-    if (textView.text.length > self.preTextLength ) {
-        
-        [self.zxlaebl setText:[NSString stringWithFormat:@"%zd",self.zxlaebl.text.intValue - 1]];
-    }else{
-        [self.zxlaebl setText:[NSString stringWithFormat:@"%zd",self.zxlaebl.text.intValue + 1]];
-
-    }
+//    if (textView.text.length > self.preTextLength ) {
     
-    self.preTextLength = textView.text.length;
+        [self.zxlaebl setText:[NSString stringWithFormat:@"%zd",200 - textView.text.length]];
+//    }else{
+//        [self.zxlaebl setText:[NSString stringWithFormat:@"%zd",200 - textView.text.length]];
+//
+//    }
+    
+//    self.preTextLength = textView.text.length;
 }
 
 //- (void)textViewDidChangeSelection:(UITextView *)textView
