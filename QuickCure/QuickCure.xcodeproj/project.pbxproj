@@ -50,6 +50,8 @@
 		6A5B16441D87A66B00BAD5E2 /* HMTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A5B16431D87A66B00BAD5E2 /* HMTableViewCell.m */; };
 		6A5B16471D87A68500BAD5E2 /* HMModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A5B16461D87A68500BAD5E2 /* HMModel.m */; };
 		6A60D1DD1D8908C700B15B2D /* DoctorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A60D1DC1D8908C700B15B2D /* DoctorViewController.m */; };
+		6AAED6541D8BF5EC00FD9D3B /* xinXue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AAED6531D8BF5EC00FD9D3B /* xinXue.m */; };
+		6AAED6571D8BF61A00FD9D3B /* xinXueTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AAED6561D8BF61A00FD9D3B /* xinXueTableViewController.m */; };
 		98213D4F1D8BCC8200569F10 /* ZXDoctor.m in Sources */ = {isa = PBXBuildFile; fileRef = 98213D4E1D8BCC8200569F10 /* ZXDoctor.m */; };
 		98745AFF1D878E9300436DEA /* MBProgressHUD+WP.m in Sources */ = {isa = PBXBuildFile; fileRef = 98745AFB1D878E9300436DEA /* MBProgressHUD+WP.m */; };
 		98745B001D878E9300436DEA /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 98745AFC1D878E9300436DEA /* MBProgressHUD.bundle */; };
@@ -151,6 +153,10 @@
 		6A5B16461D87A68500BAD5E2 /* HMModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMModel.m; sourceTree = "<group>"; };
 		6A60D1DB1D8908C700B15B2D /* DoctorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorViewController.h; sourceTree = "<group>"; };
 		6A60D1DC1D8908C700B15B2D /* DoctorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorViewController.m; sourceTree = "<group>"; };
+		6AAED6521D8BF5DA00FD9D3B /* xinXue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xinXue.h; sourceTree = "<group>"; };
+		6AAED6531D8BF5EC00FD9D3B /* xinXue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xinXue.m; sourceTree = "<group>"; };
+		6AAED6551D8BF61000FD9D3B /* xinXueTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xinXueTableViewController.h; sourceTree = "<group>"; };
+		6AAED6561D8BF61A00FD9D3B /* xinXueTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xinXueTableViewController.m; sourceTree = "<group>"; };
 		98213D4D1D8BCC8200569F10 /* ZXDoctor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXDoctor.h; sourceTree = "<group>"; };
 		98213D4E1D8BCC8200569F10 /* ZXDoctor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXDoctor.m; sourceTree = "<group>"; };
 		98745AFA1D878E9300436DEA /* MBProgressHUD+WP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+WP.h"; sourceTree = "<group>"; };
@@ -532,6 +538,10 @@
 		5B9E1D361D8BD74900154EE6 /* 模糊搜索table */ = {
 			isa = PBXGroup;
 			children = (
+				6AAED6521D8BF5DA00FD9D3B /* xinXue.h */,
+				6AAED6531D8BF5EC00FD9D3B /* xinXue.m */,
+				6AAED6551D8BF61000FD9D3B /* xinXueTableViewController.h */,
+				6AAED6561D8BF61A00FD9D3B /* xinXueTableViewController.m */,
 			);
 			name = "模糊搜索table";
 			sourceTree = "<group>";
@@ -869,6 +879,7 @@
 				3D3C694F1D83E6F800980F63 /* LeftViewController.m in Sources */,
 				3D3C695B1D83E7FC00980F63 /* AboutProductViewController.m in Sources */,
 				98745B011D878E9300436DEA /* MBProgressHUD.m in Sources */,
+				6AAED6571D8BF61A00FD9D3B /* xinXueTableViewController.m in Sources */,
 				3D3C69491D83E68C00980F63 /* BaseViewController.m in Sources */,
 				5B9E1D351D89C09B00154EE6 /* VideoCell.m in Sources */,
 				98213D4F1D8BCC8200569F10 /* ZXDoctor.m in Sources */,
@@ -877,6 +888,7 @@
 				6A5B16471D87A68500BAD5E2 /* HMModel.m in Sources */,
 				C1ADBA951D8BCFC3004BD020 /* SyndromeInfoModel.m in Sources */,
 				37E877211D86F85200F92637 /* CaseManagerViewController.m in Sources */,
+				6AAED6541D8BF5EC00FD9D3B /* xinXue.m in Sources */,
 				6A60D1DD1D8908C700B15B2D /* DoctorViewController.m in Sources */,
 				98745AFF1D878E9300436DEA /* MBProgressHUD+WP.m in Sources */,
 				3D3C694C1D83E6C600980F63 /* BaseNaviController.m in Sources */,
