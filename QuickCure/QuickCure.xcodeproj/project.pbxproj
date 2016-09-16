@@ -58,6 +58,7 @@
 		98745B011D878E9300436DEA /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 98745AFE1D878E9300436DEA /* MBProgressHUD.m */; };
 		98E3DAA81D86BF2C00CB957D /* feedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98E3DAA71D86BF2C00CB957D /* feedbackViewController.m */; };
 		C1ADBA951D8BCFC3004BD020 /* SyndromeInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C1ADBA941D8BCFC3004BD020 /* SyndromeInfoModel.m */; };
+		C1ADBABC1D8C2015004BD020 /* NSString+pinyin.m in Sources */ = {isa = PBXBuildFile; fileRef = C1ADBABB1D8C2015004BD020 /* NSString+pinyin.m */; };
 		C1CFE2B51D8691C8000EA741 /* DoctorApplyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CFE2B41D8691C8000EA741 /* DoctorApplyCell.m */; };
 		C1CFE2B91D869D52000EA741 /* DoctorApplyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CFE2B81D869D52000EA741 /* DoctorApplyModel.m */; };
 		C1CFE2BB1D869E4D000EA741 /* doctorApply.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1CFE2BA1D869E4D000EA741 /* doctorApply.plist */; };
@@ -169,6 +170,8 @@
 		B619B56FB51F3A87FB86BDBB /* Pods-QuickCure.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickCure.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QuickCure/Pods-QuickCure.debug.xcconfig"; sourceTree = "<group>"; };
 		C1ADBA931D8BCFC3004BD020 /* SyndromeInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyndromeInfoModel.h; sourceTree = "<group>"; };
 		C1ADBA941D8BCFC3004BD020 /* SyndromeInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyndromeInfoModel.m; sourceTree = "<group>"; };
+		C1ADBABA1D8C2015004BD020 /* NSString+pinyin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+pinyin.h"; sourceTree = "<group>"; };
+		C1ADBABB1D8C2015004BD020 /* NSString+pinyin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+pinyin.m"; sourceTree = "<group>"; };
 		C1CFE2B31D8691C8000EA741 /* DoctorApplyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorApplyCell.h; sourceTree = "<group>"; };
 		C1CFE2B41D8691C8000EA741 /* DoctorApplyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorApplyCell.m; sourceTree = "<group>"; };
 		C1CFE2B71D869D52000EA741 /* DoctorApplyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorApplyModel.h; sourceTree = "<group>"; };
@@ -538,6 +541,7 @@
 		5B9E1D361D8BD74900154EE6 /* 模糊搜索table */ = {
 			isa = PBXGroup;
 			children = (
+				C1ADBAB91D8C2015004BD020 /* NSString+pinyin */,
 				6AAED6521D8BF5DA00FD9D3B /* xinXue.h */,
 				6AAED6531D8BF5EC00FD9D3B /* xinXue.m */,
 				6AAED6551D8BF61000FD9D3B /* xinXueTableViewController.h */,
@@ -711,6 +715,15 @@
 				C1ADBA941D8BCFC3004BD020 /* SyndromeInfoModel.m */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		C1ADBAB91D8C2015004BD020 /* NSString+pinyin */ = {
+			isa = PBXGroup;
+			children = (
+				C1ADBABA1D8C2015004BD020 /* NSString+pinyin.h */,
+				C1ADBABB1D8C2015004BD020 /* NSString+pinyin.m */,
+			);
+			path = "NSString+pinyin";
 			sourceTree = "<group>";
 		};
 		C1CFE2B21D86900D000EA741 /* Cell */ = {
@@ -891,6 +904,7 @@
 				6AAED6541D8BF5EC00FD9D3B /* xinXue.m in Sources */,
 				6A60D1DD1D8908C700B15B2D /* DoctorViewController.m in Sources */,
 				98745AFF1D878E9300436DEA /* MBProgressHUD+WP.m in Sources */,
+				C1ADBABC1D8C2015004BD020 /* NSString+pinyin.m in Sources */,
 				3D3C694C1D83E6C600980F63 /* BaseNaviController.m in Sources */,
 				C1CFE2B51D8691C8000EA741 /* DoctorApplyCell.m in Sources */,
 				37E8772C1D8794F000F92637 /* CaseUpCell.m in Sources */,

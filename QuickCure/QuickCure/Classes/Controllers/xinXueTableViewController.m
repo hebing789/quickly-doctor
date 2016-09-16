@@ -8,9 +8,12 @@
 
 #import "xinXueTableViewController.h"
 #import "xinXue.h"
+#import "NSString+pinyin.h"
+
 @interface xinXueTableViewController ()
 
 @property (nonatomic,strong)NSArray *modelArray;
+@property (nonatomic,strong)NSArray *tempModelArray;
 
 @end
 
@@ -27,13 +30,49 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 150, 30)];
+    textField.backgroundColor = [UIColor whiteColor];
+    textField.tintColor = [UIColor lightGrayColor];
+    
+    textField.layer.cornerRadius = 10;
+    textField.clipsToBounds = YES;
+    
+    textField.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 0)];
+    textField.leftViewMode = UITextFieldViewModeAlways;
+    
+    textField.placeholder = @"请输入关键字";
+    self.navigationItem.titleView = textField;
+    
+    [textField addTarget:self action:@selector(observeTextField:) forControlEvents:UIControlEventEditingChanged];
+    
 //    [self.tableView registerClass:[xinXue class] forCellReuseIdentifier:@"xinXuecell"];
     
     [xinXue modelWithSuccess:^(NSArray<xinXue *> *model) {
         self.modelArray = model;
+        _tempModelArray = model;
     } error:^{
         
     }];
+}
+
+- (void)observeTextField:(UITextField *)textField
+{
+    self.modelArray = self.tempModelArray;
+    
+    NSMutableArray *mArr = [NSMutableArray array];
+    for (xinXue *string in self.modelArray) {
+        NSString *checkString = [string.ci3_name transformToPinyinFirstLetter];
+        NSString *inputString = [textField.text lowercaseString];
+        
+        if ([checkString containsString:inputString]) {
+            
+            [mArr addObject:string];
+            self.modelArray = mArr.copy;
+            
+            [self.tableView reloadData];
+            
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning {
