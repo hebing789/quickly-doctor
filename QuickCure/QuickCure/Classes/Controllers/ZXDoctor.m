@@ -70,7 +70,6 @@
         //        make.edges.equalTo(self.view).mas_offset(UIEdgeInsetsMake(70, 10, 570, 100));
         make.top.equalTo(self.mas_topLayoutGuide).offset(20);
         make.left.equalTo(self.view.mas_left).offset(10);
-       
 
         
     }];
