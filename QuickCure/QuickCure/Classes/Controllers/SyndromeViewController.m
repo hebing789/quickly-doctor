@@ -7,6 +7,7 @@
 //
 
 #import "SyndromeViewController.h"
+#import "SyndromeInfoModel.h"
 
 @interface SyndromeViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -14,9 +15,27 @@
 
 @property(nonatomic,strong) UIButton *subscribeBtn;
 
+@property(nonatomic,strong) NSArray<SyndromeInfoModel *> *infoModelArr;
+
+@property(nonatomic,copy) NSMutableString *syndromeString;
+
 @end
 
 @implementation SyndromeViewController
+
+- (void)setInfoModelArr:(NSArray<SyndromeInfoModel *> *)infoModelArr
+{
+    _infoModelArr = infoModelArr;
+    [self.syndromeTableView reloadData];
+}
+
+- (NSMutableString *)syndromeString
+{
+    if (!_syndromeString) {
+        _syndromeString = [[NSMutableString alloc] init];
+    }
+    return _syndromeString;
+}
 
 - (UITableView *)syndromeTableView
 {
@@ -57,6 +76,12 @@
     [self layoutSubviews];
     
     [self setNavigationBar];
+    
+    [SyndromeInfoModel modelWithSuccess:^(NSArray<SyndromeInfoModel *> *modelArr) {
+        self.infoModelArr = modelArr;
+    } error:^{
+        NSLog(@"error");
+    }];
 }
 
 - (void) layoutSubviews{
@@ -70,13 +95,16 @@
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"jiantou"] style:UIBarButtonItemStylePlain target:self action:@selector(clickLeftBarBtn)];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"确定" style:UIBarButtonItemStylePlain target:self action:@selector(clickRightBarBtn)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"确定    " style:UIBarButtonItemStylePlain target:self action:@selector(clickRightBarBtn)];
+    [self.navigationItem.rightBarButtonItem setTintColor:[UIColor blackColor]];
+    
 }
 
 - (void)clickBtn:(UIButton *)button
 {
     if([button.titleLabel.text isEqualToString:@"订阅"])
     {
+       
         [button setTitle:@"已订阅" forState:UIControlStateNormal];
         [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     }
@@ -93,20 +121,24 @@
 
 - (void)clickRightBarBtn
 {
-    NSLog(@"ssss");
+    if (_tempBlock) {
+        _tempBlock(@"测试");
+    }
+    NSLog(@"%@",self.syndromeString);
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - dataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return self.infoModelArr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"syndromeCell" forIndexPath:indexPath];
     
-    cell.textLabel.text = @"测试";
+    cell.textLabel.text = [self.infoModelArr[indexPath.row] complication_name];
     cell.accessoryView = self.subscribeBtn;
     
     return cell;
