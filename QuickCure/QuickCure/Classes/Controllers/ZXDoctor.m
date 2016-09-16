@@ -119,7 +119,7 @@
      
      [_view addGestureRecognizer:tapGesture];
      */
-  
+    
     
     //第二条
     UIView *secondView = [[UIView alloc]init];
@@ -337,7 +337,7 @@
     [blewimage mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.blewView).mas_equalTo(UIEdgeInsetsMake(14, 305, 14, 20));
     }];
- 
+    
     
     
     UITapGestureRecognizer *tapGesutre1 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(mohuSearch:)];
@@ -415,16 +415,16 @@
 
 -(void)bingfazheng:(UITapGestureRecognizer *)tap
 {
-    SyndromeViewController* bingFaZheng=[[SyndromeViewController alloc]init];
-    [self.navigationController pushViewController:bingFaZheng animated:YES];
+    
     
     //        self.navigationController.navigationItem
 }
 -(void)cureWay:(UITapGestureRecognizer *)tap
 {
     
+    SyndromeViewController* bingFaZheng=[[SyndromeViewController alloc]init];
+    [self.navigationController pushViewController:bingFaZheng animated:YES];
     
-  
 }
 
 

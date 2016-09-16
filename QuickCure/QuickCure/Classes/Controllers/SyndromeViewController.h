@@ -10,4 +10,6 @@
 
 @interface SyndromeViewController : UIViewController
 
+@property(nonatomic,copy) void(^tempBlock)(NSString *);
+
 @end

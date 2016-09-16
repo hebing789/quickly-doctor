@@ -55,6 +55,7 @@
 		98745B001D878E9300436DEA /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 98745AFC1D878E9300436DEA /* MBProgressHUD.bundle */; };
 		98745B011D878E9300436DEA /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 98745AFE1D878E9300436DEA /* MBProgressHUD.m */; };
 		98E3DAA81D86BF2C00CB957D /* feedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98E3DAA71D86BF2C00CB957D /* feedbackViewController.m */; };
+		C1ADBA951D8BCFC3004BD020 /* SyndromeInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C1ADBA941D8BCFC3004BD020 /* SyndromeInfoModel.m */; };
 		C1CFE2B51D8691C8000EA741 /* DoctorApplyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CFE2B41D8691C8000EA741 /* DoctorApplyCell.m */; };
 		C1CFE2B91D869D52000EA741 /* DoctorApplyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CFE2B81D869D52000EA741 /* DoctorApplyModel.m */; };
 		C1CFE2BB1D869E4D000EA741 /* doctorApply.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1CFE2BA1D869E4D000EA741 /* doctorApply.plist */; };
@@ -160,6 +161,8 @@
 		98E3DAA61D86BF2C00CB957D /* feedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = feedbackViewController.h; sourceTree = "<group>"; };
 		98E3DAA71D86BF2C00CB957D /* feedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = feedbackViewController.m; sourceTree = "<group>"; };
 		B619B56FB51F3A87FB86BDBB /* Pods-QuickCure.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickCure.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QuickCure/Pods-QuickCure.debug.xcconfig"; sourceTree = "<group>"; };
+		C1ADBA931D8BCFC3004BD020 /* SyndromeInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyndromeInfoModel.h; sourceTree = "<group>"; };
+		C1ADBA941D8BCFC3004BD020 /* SyndromeInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyndromeInfoModel.m; sourceTree = "<group>"; };
 		C1CFE2B31D8691C8000EA741 /* DoctorApplyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorApplyCell.h; sourceTree = "<group>"; };
 		C1CFE2B41D8691C8000EA741 /* DoctorApplyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorApplyCell.m; sourceTree = "<group>"; };
 		C1CFE2B71D869D52000EA741 /* DoctorApplyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorApplyModel.h; sourceTree = "<group>"; };
@@ -691,6 +694,15 @@
 			name = "意见反馈";
 			sourceTree = "<group>";
 		};
+		C1ADBA921D8BCF8E004BD020 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C1ADBA931D8BCFC3004BD020 /* SyndromeInfoModel.h */,
+				C1ADBA941D8BCFC3004BD020 /* SyndromeInfoModel.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		C1CFE2B21D86900D000EA741 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -713,6 +725,7 @@
 		C1D1FCCB1D8B886E00865C25 /* 主页跳转界面 */ = {
 			isa = PBXGroup;
 			children = (
+				C1ADBA921D8BCF8E004BD020 /* Models */,
 				C1D1FCCC1D8B88F100865C25 /* SyndromeViewController.h */,
 				C1D1FCCD1D8B88F100865C25 /* SyndromeViewController.m */,
 			);
@@ -862,6 +875,7 @@
 				3D3C69291D83AA3C00980F63 /* ViewController.m in Sources */,
 				3D3C690D1D83A61200980F63 /* AppDelegate.m in Sources */,
 				6A5B16471D87A68500BAD5E2 /* HMModel.m in Sources */,
+				C1ADBA951D8BCFC3004BD020 /* SyndromeInfoModel.m in Sources */,
 				37E877211D86F85200F92637 /* CaseManagerViewController.m in Sources */,
 				6A60D1DD1D8908C700B15B2D /* DoctorViewController.m in Sources */,
 				98745AFF1D878E9300436DEA /* MBProgressHUD+WP.m in Sources */,
