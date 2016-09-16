@@ -328,7 +328,11 @@
                 break;
             case AFNetworkReachabilityStatusNotReachable:
                
-            {  UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"网络没连接" preferredStyle:UIAlertControllerStyleActionSheet];
+            {  UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"网络没连接" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction* action=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    
+                }];
+                [alertController addAction:action];
                 [self presentViewController:alertController animated:YES completion:nil];
                 
         }
