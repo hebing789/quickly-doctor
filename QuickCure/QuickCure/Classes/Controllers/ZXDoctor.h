@@ -8,6 +8,7 @@
 
 #import "BaseNaviController.h"
 
-@interface ZXDoctor : BaseNaviController
+@interface ZXDoctor : UIViewController
 
+@property(nonatomic,copy) NSString* title;
 @end

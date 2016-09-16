@@ -7,7 +7,7 @@
 //
 
 #import "ZXDoctor.h"
-
+#import "SyndromeViewController.h"
 @interface ZXDoctor ()
 
 
@@ -60,18 +60,21 @@
     [self.view addSubview:zlabel];
     [zlabel mas_makeConstraints:^(MASConstraintMaker *make) {
         //        make.edges.equalTo(self.view).mas_offset(UIEdgeInsetsMake(70, 10, 570, 100));
-        make.top.equalTo(self.mas_topLayoutGuide).offset(50);
+        make.top.equalTo(self.mas_topLayoutGuide).offset(20);
         make.left.equalTo(self.view.mas_left).offset(10);
-        make.bottom.equalTo(@-540);
-        make.right.equalTo(@100);
+        //            make.bottom.equalTo(@-540);
+        //            make.right.equalTo(@100);
         
     }];
     UILabel *xlabel = [[UILabel alloc]init];
     //    xlabel.backgroundColor = [UIColor redColor];
-    xlabel.text = @"疾病类型: 肿瘤";
+    xlabel.text =[NSString stringWithFormat:@"疾病类型: %@",self.title];
+    //        @"疾病类型: 肿瘤";
     [self.view addSubview:xlabel];
     [xlabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view).mas_offset(UIEdgeInsetsMake(120, 10, 530, 100));
+        //            make.edges.equalTo(self.view).mas_offset(UIEdgeInsetsMake(120, 10, 530, 100));
+        make.top.equalTo(zlabel.mas_bottom).offset(20);
+        make.left.equalTo(self.view.mas_left).offset(10);
     }];
     
 #warning 开始栏 入口
@@ -81,7 +84,11 @@
     self.firstView = firstView;
     [self.view addSubview:firstView];
     [firstView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view).mas_offset(UIEdgeInsetsMake(155, 20, 470, 20));
+        //            make.edges.equalTo(self.view).mas_offset(UIEdgeInsetsMake(155, 20, 470, 20));
+        make.top.equalTo(xlabel.mas_bottom).offset(10);
+        make.left.equalTo(self.view.mas_left).offset(10);
+        //            mak
+        
     }];
     UILabel *firstLabel = [[UILabel alloc]init];
     firstLabel.textColor = [UIColor colorWithRed:0.7333 green:0.7294 blue:0.7608 alpha:1.0];
@@ -112,8 +119,7 @@
      
      [_view addGestureRecognizer:tapGesture];
      */
-    UITapGestureRecognizer *tapGesutre = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(event:)];
-    [firstView addGestureRecognizer:tapGesutre];
+    
     
     //第二条
     UIView *secondView = [[UIView alloc]init];
@@ -121,7 +127,12 @@
     self.secondView = secondView;
     [self.view addSubview:secondView];
     [secondView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view).mas_offset(UIEdgeInsetsMake(210, 20, 415, 20));
+        //            make.edges.equalTo(self.view).mas_offset(UIEdgeInsetsMake(210, 20, 415, 20));
+        make.top.equalTo(firstView.mas_bottom).offset(10);
+        make.left.equalTo(self.view.mas_left).offset(10);
+        //            mak
+        
+        
     }];
     UILabel *secondLabel = [[UILabel alloc]init];
     secondLabel.textColor = [UIColor colorWithRed:0.7333 green:0.7294 blue:0.7608 alpha:1.0];
@@ -150,7 +161,10 @@
     self.threeView = threeView;
     [self.view addSubview:threeView];
     [threeView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view).mas_offset(UIEdgeInsetsMake(270, 20, 355, 20));
+        //            make.edges.equalTo(self.view).mas_offset(UIEdgeInsetsMake(270, 20, 355, 20));
+        make.top.equalTo(secondView.mas_bottom).offset(10);
+        make.left.equalTo(self.view.mas_left).offset(10);
+        
     }];
     UILabel *threeLabel = [[UILabel alloc]init];
     threeLabel.text = @"是否确诊";
@@ -174,6 +188,7 @@
     [self.threeView addSubview:tureLabel];
     [tureLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.threeView).mas_offset(UIEdgeInsetsMake(5, 160, 5, 0));
+        
     }];
     //    self.threeLabel = tureLabel;
     //diagnose确诊
@@ -205,7 +220,9 @@
     self.fourView = fourView;
     [self.view addSubview:fourView];
     [fourView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view).mas_offset(UIEdgeInsetsMake(330, 20, 290, 20));
+        //            make.edges.equalTo(self.view).mas_offset(UIEdgeInsetsMake(330, 20, 290, 20));
+        make.top.equalTo(threeView.mas_bottom).offset(10);
+        make.left.equalTo(self.view.mas_left).offset(10);
     }];
     UILabel *fourLabel = [[UILabel alloc]init];
     fourLabel.text = @"是否接受过治疗";
@@ -290,11 +307,14 @@
     //    ZXView *blew1View = [[ZXView alloc]init];
     //    [self.view addSubview:blewView1];
     [blewView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view).mas_equalTo(UIEdgeInsetsMake(390, 20, 240, 20));
+        //            make.edges.equalTo(self.view).mas_equalTo(UIEdgeInsetsMake(390, 20, 240, 20));
+        make.top.equalTo(fourView.mas_bottom).offset(10);
+        make.left.equalTo(self.view.mas_left).offset(10);
+        
     }];
     //添加文字
     UILabel *blewLabel = [[UILabel alloc]init];
-    blewLabel.textColor = [UIColor colorWithRed:0.7333 green:0.7294 blue:0.7608 alpha:1.0];
+    //        blewLabel.textColor = [UIColor colorWithRed:0.7333 green:0.7294 blue:0.7608 alpha:1.0];
     blewLabel.text = @"请选择治疗方式";
     self.blewLabel = blewLabel;
     [self.blewView addSubview:blewLabel];
@@ -317,11 +337,15 @@
     [blewimage mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.blewView).mas_equalTo(UIEdgeInsetsMake(14, 305, 14, 20));
     }];
-    /**
-     *  17, 305, 17, 20
-     *
-     *  @return <#return value description#>
-     */
+    
+    
+    
+    UITapGestureRecognizer *tapGesutre1 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(mohuSearch:)];
+    [firstView addGestureRecognizer:tapGesutre1];
+    UITapGestureRecognizer *tapGesutre2= [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(bingfazheng:)];
+    [secondView addGestureRecognizer:tapGesutre2];
+    UITapGestureRecognizer *tapGesutre3 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(cureWay:)];
+    [blewView addGestureRecognizer:tapGesutre3];
 }
 
 -(void)diagnose:(UIButton *)button
@@ -381,12 +405,27 @@
     self.blewView.hidden = YES;
 }
 
-//-(void)event:(UIView *)view
-//{
-//    self.navigationController.navigationItem
-//}
+-(void)mohuSearch:(UITapGestureRecognizer *)tap
+{
+    
+    
+    //        self.navigationController.navigationItem
+}
 
 
+-(void)bingfazheng:(UITapGestureRecognizer *)tap
+{
+    
+    
+    //        self.navigationController.navigationItem
+}
+-(void)cureWay:(UITapGestureRecognizer *)tap
+{
+    
+    SyndromeViewController* bingFaZheng=[[SyndromeViewController alloc]init];
+    [self.navigationController pushViewController:bingFaZheng animated:YES];
+    
+}
 
 
 

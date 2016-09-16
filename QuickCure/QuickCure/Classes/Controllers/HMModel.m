@@ -31,11 +31,9 @@
      NSDictionary *parmas = @{@"user_id":@1000089,@"page_size":@15,@"page":@1};
     
     [[NetWorkTool shareManager]POST_RequestWithUrlString:@"http://iosapi.itcast.cn/doctorList.json.php" parmas:parmas successBloock:^(NSDictionary *responseObject) {
-        
-//        NSLog(@"%@",responseObject);
+    
         NSMutableArray *mArray = [NSMutableArray array];
-//        NSString *rootKey =  responseObject.keyEnumerator.nextObject;
-//        NSArray<NSDictionary *> *array = responseObject[rootKey];
+
         NSArray<NSDictionary *> *array = responseObject[@"data"];
         
         [array enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
