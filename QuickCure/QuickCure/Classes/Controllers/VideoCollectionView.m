@@ -94,7 +94,7 @@
 
 
 -(void)setUI{
-    self.bounds=CGRectMake(0, 0, screemW, 200);
+    self.bounds=CGRectMake(0, 0, screemW, (screemH-(2.0/3.0)*screemW-64-90-40-22));
         UICollectionViewFlowLayout* flowLayOut=[[UICollectionViewFlowLayout alloc]init];
     self.flowLayOut=flowLayOut;
    

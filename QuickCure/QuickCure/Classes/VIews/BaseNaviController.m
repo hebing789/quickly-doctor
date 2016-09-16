@@ -16,6 +16,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+//    self.navigationBar.tintColor=[UIColor whiteColor];
+//      self.navigationController.navigationBar.translucent = NO;
     // Do any additional setup after loading the view.
 }
 
