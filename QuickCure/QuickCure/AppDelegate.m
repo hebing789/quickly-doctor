@@ -34,6 +34,9 @@
     
     self.viewController.centerPanel = [[UINavigationController alloc] initWithRootViewController:homeVc];
     
+    //修改导航栏颜色
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    
    // 显示window
     self.window.rootViewController = self.viewController;
     
