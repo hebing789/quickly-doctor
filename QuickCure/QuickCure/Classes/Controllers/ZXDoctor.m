@@ -60,18 +60,21 @@
         [self.view addSubview:zlabel];
         [zlabel mas_makeConstraints:^(MASConstraintMaker *make) {
             //        make.edges.equalTo(self.view).mas_offset(UIEdgeInsetsMake(70, 10, 570, 100));
-            make.top.equalTo(self.mas_topLayoutGuide).offset(50);
+            make.top.equalTo(self.mas_topLayoutGuide).offset(20);
             make.left.equalTo(self.view.mas_left).offset(10);
-            make.bottom.equalTo(@-540);
-            make.right.equalTo(@100);
+//            make.bottom.equalTo(@-540);
+//            make.right.equalTo(@100);
             
         }];
         UILabel *xlabel = [[UILabel alloc]init];
         //    xlabel.backgroundColor = [UIColor redColor];
-        xlabel.text = @"疾病类型: 肿瘤";
+        xlabel.text =[NSString stringWithFormat:@"疾病类型: %@",self.title];
+//        @"疾病类型: 肿瘤";
         [self.view addSubview:xlabel];
         [xlabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.equalTo(self.view).mas_offset(UIEdgeInsetsMake(120, 10, 530, 100));
+//            make.edges.equalTo(self.view).mas_offset(UIEdgeInsetsMake(120, 10, 530, 100));
+            make.top.equalTo(zlabel.mas_bottom).offset(20);
+            make.left.equalTo(self.view.mas_left).offset(10);
         }];
         
 #warning 开始栏 入口
@@ -81,7 +84,11 @@
         self.firstView = firstView;
         [self.view addSubview:firstView];
         [firstView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.equalTo(self.view).mas_offset(UIEdgeInsetsMake(155, 20, 470, 20));
+//            make.edges.equalTo(self.view).mas_offset(UIEdgeInsetsMake(155, 20, 470, 20));
+            make.top.equalTo(xlabel.mas_bottom).offset(5);
+            make.left.equalTo(self.view.mas_left).offset(10);
+//            mak
+
         }];
         UILabel *firstLabel = [[UILabel alloc]init];
         firstLabel.textColor = [UIColor colorWithRed:0.7333 green:0.7294 blue:0.7608 alpha:1.0];
@@ -121,7 +128,12 @@
         self.secondView = secondView;
         [self.view addSubview:secondView];
         [secondView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.equalTo(self.view).mas_offset(UIEdgeInsetsMake(210, 20, 415, 20));
+//            make.edges.equalTo(self.view).mas_offset(UIEdgeInsetsMake(210, 20, 415, 20));
+            make.top.equalTo(firstView.mas_bottom).offset(20);
+            make.left.equalTo(self.view.mas_left).offset(10);
+            //            mak
+
+            
         }];
         UILabel *secondLabel = [[UILabel alloc]init];
         secondLabel.textColor = [UIColor colorWithRed:0.7333 green:0.7294 blue:0.7608 alpha:1.0];

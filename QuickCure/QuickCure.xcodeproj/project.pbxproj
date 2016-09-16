@@ -523,6 +523,13 @@
 			name = "分享给好友";
 			sourceTree = "<group>";
 		};
+		5B9E1D361D8BD74900154EE6 /* 模糊搜索table */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "模糊搜索table";
+			sourceTree = "<group>";
+		};
 		5BF4B3CB1D86D0EA0054AA86 /* 天气 */ = {
 			isa = PBXGroup;
 			children = (
@@ -634,6 +641,7 @@
 		98213D4C1D8BCC4F00569F10 /* 医药转 */ = {
 			isa = PBXGroup;
 			children = (
+				5B9E1D361D8BD74900154EE6 /* 模糊搜索table */,
 				98213D4D1D8BCC8200569F10 /* ZXDoctor.h */,
 				98213D4E1D8BCC8200569F10 /* ZXDoctor.m */,
 			);
