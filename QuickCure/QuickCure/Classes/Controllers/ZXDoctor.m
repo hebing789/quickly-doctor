@@ -8,6 +8,7 @@
 
 #import "ZXDoctor.h"
 #import "SyndromeViewController.h"
+#import "DoctorViewController.h"
 @interface ZXDoctor ()
 
 
@@ -362,7 +363,7 @@
     [zxbutton setTitle:@"就医申请" forState:UIControlStateNormal];
     [zxbutton setTitle:@"皮卡 皮卡 啾啾揪 十万伏特" forState:UIControlStateHighlighted];
     [self.view addSubview:zxbutton];
-    
+    [zxbutton addTarget:self action:@selector(toConcernDoctor) forControlEvents:UIControlEventTouchUpInside];
     [zxbutton mas_makeConstraints:^(MASConstraintMaker *make) {
 //        make.edges.equalTo(self.view).mas_equalTo(UIEdgeInsetsMake(605, 10, 20, 10));
         make.top.equalTo(ImageView.mas_bottom).offset(20);
@@ -441,6 +442,7 @@
 {
     
     
+    
     //        self.navigationController.navigationItem
 }
 
@@ -468,7 +470,13 @@
 }
 
 
-
+-(void)toConcernDoctor{
+    DoctorViewController* dv=[[DoctorViewController alloc]init];
+     [self.navigationController pushViewController:dv animated:YES];
+    
+    
+    
+}
 
 
 
