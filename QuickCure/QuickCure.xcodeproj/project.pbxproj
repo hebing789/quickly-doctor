@@ -47,6 +47,7 @@
 		5BF4B3D61D86D3D60054AA86 /* UIView+UIframe.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF4B3D51D86D3D60054AA86 /* UIView+UIframe.m */; };
 		5BF4B3E41D870F320054AA86 /* CityableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF4B3E31D870F320054AA86 /* CityableViewController.m */; };
 		5BF4B3E81D870FE00054AA86 /* ProvinceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF4B3E71D870FE00054AA86 /* ProvinceModel.m */; };
+		5BFAAAD01D8CC97F00632BC5 /* EveryDayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFAAACF1D8CC97F00632BC5 /* EveryDayViewController.m */; };
 		6A5B16441D87A66B00BAD5E2 /* HMTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A5B16431D87A66B00BAD5E2 /* HMTableViewCell.m */; };
 		6A5B16471D87A68500BAD5E2 /* HMModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A5B16461D87A68500BAD5E2 /* HMModel.m */; };
 		6A60D1DD1D8908C700B15B2D /* DoctorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A60D1DC1D8908C700B15B2D /* DoctorViewController.m */; };
@@ -148,6 +149,8 @@
 		5BF4B3E31D870F320054AA86 /* CityableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityableViewController.m; sourceTree = "<group>"; };
 		5BF4B3E61D870FE00054AA86 /* ProvinceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProvinceModel.h; sourceTree = "<group>"; };
 		5BF4B3E71D870FE00054AA86 /* ProvinceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProvinceModel.m; sourceTree = "<group>"; };
+		5BFAAACE1D8CC97F00632BC5 /* EveryDayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EveryDayViewController.h; sourceTree = "<group>"; };
+		5BFAAACF1D8CC97F00632BC5 /* EveryDayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EveryDayViewController.m; sourceTree = "<group>"; };
 		6A5B16421D87A66B00BAD5E2 /* HMTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMTableViewCell.h; sourceTree = "<group>"; };
 		6A5B16431D87A66B00BAD5E2 /* HMTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMTableViewCell.m; sourceTree = "<group>"; };
 		6A5B16451D87A68500BAD5E2 /* HMModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMModel.h; sourceTree = "<group>"; };
@@ -625,6 +628,7 @@
 		5BF4B3E11D870EF90054AA86 /* 城市选择 */ = {
 			isa = PBXGroup;
 			children = (
+				5BFAAACD1D8CC96300632BC5 /* everyDayWeather */,
 				5BF4B3E51D870FA90054AA86 /* model */,
 				5BF4B3E21D870F320054AA86 /* CityableViewController.h */,
 				5BF4B3E31D870F320054AA86 /* CityableViewController.m */,
@@ -639,6 +643,15 @@
 				5BF4B3E71D870FE00054AA86 /* ProvinceModel.m */,
 			);
 			name = model;
+			sourceTree = "<group>";
+		};
+		5BFAAACD1D8CC96300632BC5 /* everyDayWeather */ = {
+			isa = PBXGroup;
+			children = (
+				5BFAAACE1D8CC97F00632BC5 /* EveryDayViewController.h */,
+				5BFAAACF1D8CC97F00632BC5 /* EveryDayViewController.m */,
+			);
+			name = everyDayWeather;
 			sourceTree = "<group>";
 		};
 		6A5B16401D87A65400BAD5E2 /* cell */ = {
@@ -921,6 +934,7 @@
 				5BF4B3E41D870F320054AA86 /* CityableViewController.m in Sources */,
 				37E877401D8801EC00F92637 /* CaseDitailController.m in Sources */,
 				3D3C69521D83E75100980F63 /* LoginViewController.m in Sources */,
+				5BFAAAD01D8CC97F00632BC5 /* EveryDayViewController.m in Sources */,
 				98E3DAA81D86BF2C00CB957D /* feedbackViewController.m in Sources */,
 				5BF4B3D31D86D2060054AA86 /* WeatherView.m in Sources */,
 				5B9E1D3B1D8BDDEE00154EE6 /* commonViewController.m in Sources */,

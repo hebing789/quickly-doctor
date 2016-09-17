@@ -24,7 +24,7 @@
 
 @property(nonatomic,strong)UILabel* lb_temdata;
 
-@property(nonatomic,strong)UILabel* lb_dataData;
+
 
 @property(nonatomic,strong)UIButton* but_location;
 
@@ -32,6 +32,7 @@
 @end
 #import "WeatherModel.h"
 #import "CityableViewController.h"
+#import "EveryDayViewController.h"
 
 @implementation WeatherView
 
@@ -69,18 +70,27 @@
     
 //    NSLog(@"%@",datastring);
     
+    //这个位置只在刷新的时候生效
     WeatherModel* model;
-    for (WeatherModel* temmodel in dataAry) {
+    if (!self.item) {
         
-        if ([temmodel.date containsString:datastring]) {
-            model=temmodel;
+        for (WeatherModel* temmodel in dataAry) {
+            
+            if ([temmodel.date containsString:datastring]) {
+                model=temmodel;
+            }
         }
+        
+        if (!model) {
+            model=self.dataAry[0];
+        }
+
+    }else{
+        
+        model=self.dataAry[self.item.intValue];
     }
     
-    if (!model) {
-        model=self.dataAry[0];
-    }
-    //数组第一个数据就可以
+        //数组第一个数据就可以
     
 //    NSLog(@"%@",model);
     
@@ -169,13 +179,49 @@
 -(void)setUI{
 //        self.backgroundColor=[UIColor redColor];
     
-    _location=@"上海";
+    if (self.but_location.titleLabel.text.length==0) {
+        _location=@"上海";
+    }else{
+    _location=self.but_location.titleLabel.text;
+    }
     [WeatherModel modelWithSucess:^(NSArray *ary) {
         
         
         
         self.dataAry = ary;
-        WeatherModel* model=self.dataAry[0];
+        NSDate* date=[NSDate date];
+        
+        NSDateFormatter* formatter=[[NSDateFormatter alloc]init];
+        
+        formatter.dateFormat=@"dd";
+        
+        NSString* datastring=[formatter stringFromDate:date];
+        
+        //    NSLog(@"%@",datastring);
+        
+        //这个位置只在刷新的时候生效
+
+        WeatherModel* model;
+        if (!self.item) {
+            
+            for (WeatherModel* temmodel in self.dataAry) {
+                
+                if ([temmodel.date containsString:datastring]) {
+                    model=temmodel;
+                }
+            }
+            
+            if (!model) {
+                model=self.dataAry[0];
+            }
+            
+        }else{
+            
+            model=self.dataAry[self.item.intValue];
+        }
+        
+
+       
 //        NSLog(@"%@",model);
       
         UIView* centerMargin=[[UIView alloc]init];
@@ -268,8 +314,21 @@
         
         _lb_dataData.textColor=WeaColor;
         _lb_dataData.font= KFontSize;
-
         
+        if (!self.item) {
+           
+            _lb_dataData.userInteractionEnabled=YES;
+            
+                    }else{
+                        
+                        _but_location.userInteractionEnabled=NO;
+
+            
+        }
+        
+        UITapGestureRecognizer* tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(toEveryDayTem)];
+
+        [_lb_dataData addGestureRecognizer:tap];
         [self addSubview:_lb_dataData];
         
 
@@ -310,8 +369,8 @@
         
         self.location =location;
         
-        self.item=item;
-//        
+//        self.item=item;//这个参数没用
+//
 //        [[self viewController].navigationController popToViewController:[self viewController] animated:YES];
 //
         
@@ -342,6 +401,17 @@
         next = [next nextResponder];
     } while (next != nil);
     return nil;
+    
+}
+
+-(void)toEveryDayTem{
+    
+    EveryDayViewController* everyDayViewContro=[[EveryDayViewController alloc]init];
+    
+    everyDayViewContro.location=self.location;
+     [[self viewController].navigationController pushViewController:everyDayViewContro animated:YES];
+    
+    
     
 }
 
